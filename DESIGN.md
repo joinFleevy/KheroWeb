@@ -103,7 +103,7 @@ components:
 
 KheroWeb pairs a split dark screening-room hero with alternating hairline-divided editorial bands (`#08090C` / `#0C0E13`) so the promise, BaridiMob/RedotPay price anchor, primary `خلّص ديريكت` and secondary `احكي معايا` triggers, full `16:9` VSL with chapter shortcuts, and 4-pillar summary strip fit cleanly in the initial desktop viewport without boxy stacked card fatigue.
 
-Across lower bands, layout rhythm alternates structure rather than repeating uniform cards: hairline editorial objection columns and a unified comparison split (`#why`), a vertical 6-module sidebar paired with a single-column hairline-divided inspector stage (`#curriculum`), a 2×2 tactile `الپاك` bento with one flat inset proof per card (`#pack`), a warm slate work-pipeline spotlight (`#work`), an unboxed step track above a flat zero-form payment/chat deck (`#enroll`), and a sticky sidebar hairline FAQ (`#faq`).
+Across lower bands, layout rhythm alternates structure rather than repeating uniform cards: the interactive CapCut Craft & Weak-PC Proxy Lab (`#lab-stage`) plus unified comparison split (`#why`), a vertical 6-module sidebar paired with a single-column hairline-divided inspector stage (`#curriculum`), a 2×2 tactile `الپاك` bento led by a playable Web Audio SFX sampler (`#pack`), a warm slate work-pipeline spotlight with a 3-stage career progression (`#work`), an All-In Value Stack & ROI summary above the step strip and zero-form payment/chat deck (`#enroll`), and a sticky sidebar hairline FAQ (`#faq`).
 
 **Key Characteristics:**
 - Unboxed alternating obsidian canvas (`#08090C` primary ground, `#0C0E13` alternating band with 1px hairlines `rgba(255, 255, 255, 0.09)`), elevated only cleanly on slate surfaces (`#12151D` / `#181C27`) and recessed specimen/copy wells (`#0A0C10`) with zero nested-card boxing.
@@ -146,7 +146,7 @@ High-contrast neutral obsidian and cool-slate tones frame warm bone typography (
 - **Container:** `1180px` max-width (`padding-inline: 1.5rem` desktop, `1rem` mobile `<= 767px`).
 - **Topbar:** `62px` sticky blurred topbar with `KHV · كون سبيسيال` brand, 4 centered links (hidden `<= 880px`), `4,900 دج` price hint, and `خلّص ديريكت`.
 - **Asymmetric Split Hero:** Desktop 2-column RTL split (`0.92fr` copy + unboxed `.hero-prices` + dual CTAs on right, `1.18fr` `16:9` VSL frame + vignette overlay + borderless controls + chapter chips on left) anchored by a 4-pillar hairline strip across the base.
-- **Alternating Sections:** `#why` (`3-col hairline objections + 1 unified compare-split`) -> `#curriculum` (`vertical 6-row sidebar + single inspector stage with 1-col hairline checklist`, collapsing to horizontal scroll rail `<= 860px`) -> `#pack` (`2×2 tactile bento`) -> `#work` (`gradient slate spotlight`) -> `#enroll` (`3-step hairline strip + align-start dual doors`) -> `#faq` (`2-col sticky sidebar + hairline accordion`).
+- **Alternating Sections:** `#why` (`Interactive CapCut Craft & Weak-PC Proxy Lab + 1 unified compare-split`) -> `#curriculum` (`vertical 6-row sidebar + single inspector stage with 1-col hairline checklist`, collapsing to horizontal scroll rail `<= 860px`) -> `#pack` (`2×2 tactile bento led by playable SFX pads`) -> `#work` (`gradient slate spotlight + 3-stage hairline career path`) -> `#enroll` (`All-In Value Stack & ROI bar + 3-step hairline strip + align-start dual doors`) -> `#faq` (`2-col sticky sidebar + hairline accordion`).
 
 ## Elevation & Shapes
 

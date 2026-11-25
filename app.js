@@ -544,6 +544,8 @@
 
     if (prevBtn) prevBtn.addEventListener('click', () => selectModule(currentIdx - 1));
     if (nextBtn) nextBtn.addEventListener('click', () => selectModule(currentIdx + 1));
+
+    return selectModule;
   }
 
   // 3. Synchronized Dual Payment Switcher & Guided 1-Tap Copy (Inline + Sheet + Mobile Sticky)
@@ -919,9 +921,253 @@
     update();
   }
 
+  // 7. Interactive CapCut Craft & Weak-PC Proxy Lab
+  function initCraftLab(selectModule) {
+    const labTabs = Array.from(document.querySelectorAll('[data-lab-tab]'));
+    const stage = document.getElementById('lab-stage');
+    const descEl = document.getElementById('lab-desc');
+    const codeEl = document.getElementById('lab-mode-code');
+    const statusPill = document.getElementById('lab-status-pill');
+    const screenEl = document.getElementById('lab-screen');
+    const screenTitle = document.getElementById('lab-screen-title');
+    const screenSub = document.getElementById('lab-screen-sub');
+    const proxyToggleBtn = document.getElementById('lab-proxy-toggle');
+    const jumpBtn = document.getElementById('lab-jump-mod');
+    if (!labTabs.length || !stage || !screenEl) return;
+
+    const LAB_MODES = {
+      proxy: {
+        desc: 'في المحور الثاني نوريلك الأوپسيون اللي تخلّيك تدير مونتاج سلس في CapCut PC حتى إذا البيسي تاعك ضعيف بزاف وبلا بلوكاج.',
+        code: 'MOD_02 · PROXY_FIX',
+        modIndex: 1,
+        jumpLabel: 'شوف التفاصيل في المحور 02 ←'
+      },
+      mask: {
+        desc: 'في المحور الثالث نوريلك تقنيات الماسك وتحريك العناصر والكتابة ورا الشخص باش الريلز تاعك تبان احترافية ديريكت.',
+        code: 'MOD_03 · MASK_LAYERS',
+        pill: '3 LAYERS · DEPTH',
+        title: 'كتابة وعناصر ورا الشخص',
+        sub: 'عزل النظرة والعمق داخل CapCut PC',
+        modIndex: 2,
+        jumpLabel: 'شوف التفاصيل في المحور 03 ←'
+      },
+      glow: {
+        desc: 'في المحور الرابع نخدمو أفكار المونتاج والـ Glow والكتابة الحديثة مع الإيقاع، وزيد دروس تضاف أوتوماتيكياً مع كل ترند.',
+        code: 'MOD_04 · GLOW_RHYTHM',
+        pill: 'TREND_READY · FX',
+        title: 'إضاءة متفاعلة وإيقاع مضبوط',
+        sub: 'تناسق الصوت + الحركة + الـ SFX',
+        modIndex: 3,
+        jumpLabel: 'شوف التفاصيل في المحور 04 ←'
+      }
+    };
+
+    let proxyOn = true;
+
+    function renderProxyState() {
+      if (proxyToggleBtn) {
+        proxyToggleBtn.setAttribute('aria-pressed', String(proxyOn));
+        proxyToggleBtn.textContent = proxyOn ? 'إعدادات المحور 02: مفعّلة' : 'بلا إعدادات: البيسي يتبلوكا';
+      }
+      screenEl.setAttribute('data-proxy-state', proxyOn ? 'on' : 'off');
+      if (statusPill) {
+        statusPill.textContent = proxyOn ? '60 FPS · SMOOTH' : '12 FPS · LAG';
+        statusPill.classList.toggle('is-ok', proxyOn);
+        statusPill.classList.toggle('is-lag', !proxyOn);
+      }
+      if (screenTitle) {
+        screenTitle.textContent = proxyOn ? 'مونتاج سلس على PC ضعيف' : 'تقطيع وبلوكاج في التايملاين';
+      }
+      if (screenSub) {
+        screenSub.textContent = proxyOn
+          ? 'بلا بلوكاج في التايملاين · معاينة تفاعلية'
+          : 'بدون إعدادات المحور الثاني (ثقيل في العرض)';
+      }
+    }
+
+    function selectLabMode(mode, focusTab = false) {
+      const cfg = LAB_MODES[mode];
+      if (!cfg) return;
+
+      labTabs.forEach((tab) => {
+        const active = tab.getAttribute('data-lab-tab') === mode;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+        if (active) {
+          stage.setAttribute('aria-labelledby', tab.id);
+          if (focusTab) tab.focus();
+        }
+      });
+
+      screenEl.setAttribute('data-lab-mode', mode);
+      if (descEl) descEl.textContent = cfg.desc;
+      if (codeEl) codeEl.textContent = cfg.code;
+      if (proxyToggleBtn) proxyToggleBtn.hidden = mode !== 'proxy';
+      if (jumpBtn) {
+        jumpBtn.setAttribute('data-jump-mod', String(cfg.modIndex));
+        jumpBtn.textContent = cfg.jumpLabel;
+      }
+
+      if (mode === 'proxy') {
+        renderProxyState();
+      } else {
+        if (statusPill) {
+          statusPill.textContent = cfg.pill;
+          statusPill.classList.add('is-ok');
+          statusPill.classList.remove('is-lag');
+        }
+        if (screenTitle) screenTitle.textContent = cfg.title;
+        if (screenSub) screenSub.textContent = cfg.sub;
+      }
+
+      trackEvent('CraftLabTab', { mode });
+    }
+
+    labTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => selectLabMode(tab.getAttribute('data-lab-tab')));
+      tab.addEventListener('keydown', (e) => {
+        let nextIdx = null;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') nextIdx = (idx + 1) % labTabs.length;
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') nextIdx = (idx - 1 + labTabs.length) % labTabs.length;
+        else if (e.key === 'Home') nextIdx = 0;
+        else if (e.key === 'End') nextIdx = labTabs.length - 1;
+        if (nextIdx !== null) {
+          e.preventDefault();
+          selectLabMode(labTabs[nextIdx].getAttribute('data-lab-tab'), true);
+        }
+      });
+    });
+
+    if (proxyToggleBtn) {
+      proxyToggleBtn.addEventListener('click', () => {
+        proxyOn = !proxyOn;
+        renderProxyState();
+        trackEvent('CraftLabProxy', { on: proxyOn });
+      });
+    }
+
+    if (jumpBtn) {
+      jumpBtn.addEventListener('click', () => {
+        const idx = Number(jumpBtn.getAttribute('data-jump-mod') || '1');
+        if (typeof selectModule === 'function') selectModule(idx);
+        const targetSection = document.getElementById('curriculum');
+        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (targetSection && typeof targetSection.scrollIntoView === 'function') {
+          targetSection.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+        }
+        const modTab = document.getElementById('mod-tab-' + idx);
+        if (modTab) {
+          try {
+            modTab.focus({ preventScroll: true });
+          } catch (_) {}
+        }
+      });
+    }
+  }
+
+  // 8. Live Playable Web Audio SFX Sampler (#pack Card 1)
+  function initSfxSampler() {
+    const pads = Array.from(document.querySelectorAll('[data-sfx-pad]'));
+    const badge = document.getElementById('sfx-badge');
+    if (!pads.length) return;
+
+    const well = pads[0].closest('.specimen-well');
+    let audioCtx = null;
+    let resetTimer = null;
+
+    function playTone(kind) {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      try {
+        if (!audioCtx) audioCtx = new Ctx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+
+        if (kind === 'whoosh') {
+          const len = Math.floor(audioCtx.sampleRate * 0.34);
+          const buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+          const ch = buf.getChannelData(0);
+          for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
+          const src = audioCtx.createBufferSource();
+          src.buffer = buf;
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.Q.value = 1.6;
+          filter.frequency.setValueAtTime(220, now);
+          filter.frequency.exponentialRampToValueAtTime(2500, now + 0.16);
+          filter.frequency.exponentialRampToValueAtTime(180, now + 0.34);
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.01, now);
+          gain.gain.linearRampToValueAtTime(0.28, now + 0.14);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.34);
+          src.connect(filter).connect(gain).connect(audioCtx.destination);
+          src.start(now);
+        } else if (kind === 'riser') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(120, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.44);
+          gain.gain.setValueAtTime(0.01, now);
+          gain.gain.linearRampToValueAtTime(0.14, now + 0.36);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.46);
+          osc.connect(gain).connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.48);
+        } else if (kind === 'hit') {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(145, now);
+          osc.frequency.exponentialRampToValueAtTime(38, now + 0.28);
+          gain.gain.setValueAtTime(0.45, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+          osc.connect(gain).connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.34);
+        } else {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(720, now);
+          osc.frequency.exponentialRampToValueAtTime(1260, now + 0.08);
+          gain.gain.setValueAtTime(0.22, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+          osc.connect(gain).connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        }
+      } catch (_) {}
+    }
+
+    pads.forEach((pad) => {
+      pad.addEventListener('click', () => {
+        const sfx = pad.getAttribute('data-sfx-pad') || 'whoosh';
+        playTone(sfx);
+
+        if (resetTimer) clearTimeout(resetTimer);
+        pads.forEach((p) => p.classList.toggle('is-active', p === pad));
+        if (well) well.classList.add('is-playing');
+        if (badge) badge.textContent = 'PLAYING: ' + sfx.toUpperCase();
+
+        resetTimer = setTimeout(() => {
+          pads.forEach((p) => p.classList.remove('is-active'));
+          if (well) well.classList.remove('is-playing');
+          if (badge) badge.textContent = '500+ FILES';
+          resetTimer = null;
+        }, 550);
+
+        trackEvent('SFXPreview', { sfx });
+      });
+    });
+  }
+
   initPixels();
   initVideoPlayer();
-  initCurriculum();
+  const selectModule = initCurriculum();
+  initCraftLab(selectModule);
+  initSfxSampler();
   initPayments();
   initActionSheet();
   initFaqAndTracking();

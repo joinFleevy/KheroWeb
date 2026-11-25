@@ -243,39 +243,66 @@
         <div class="container">
           <div class="section__head">
             <h2 id="why-title" class="section__title">علاش الدورة هادي تبدّلك مستواك صح؟</h2>
-            <p class="section__sub">ماشي كلام عام: نحلّلك 3 مشاكل حقيقية تحبس أغلب اللي يحبو يبداو المونتاج في الجزائر.</p>
+            <p class="section__sub">ماشي هدرة برك: جرّب تحت كيفاش نحلّو مشكل الـ PC الضعيف وواش تولي تخرج في الريلز.</p>
           </div>
 
-          <div class="why-columns">
-            <article class="why-col">
-              <svg class="why-col__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-              </svg>
-              <h3 class="why-col__title">عندك PC ضعيف وما تقدرش دير مونتاج؟</h3>
-              <p class="why-col__body">في المحور الثاني نوريلك الأوپسيون اللي تمنيت واحد يقولهالي في بداياتي: إعدادات وحل عملي يخلّيك تدير مونتاج في CapCut PC سلس بلا بلوكاج، حتى إذا البيسي تاعك ضعيف.</p>
-            </article>
+          <!-- Interactive Demo A: CapCut Craft & Weak-PC Proxy Lab -->
+          <div class="craft-lab">
+            <div class="craft-lab__controls">
+              <h3 class="craft-lab__heading">معاينة تفاعلية لتقنيات الدورة</h3>
+              <div class="craft-lab__tabs" role="tablist" aria-label="معاينة تقنيات المونتاج">
+                <button id="lab-tab-proxy" type="button" class="craft-tab is-active" data-lab-tab="proxy" role="tab" aria-selected="true" aria-controls="lab-stage" tabindex="0">حل الـ PC الضعيف (Proxy)</button>
+                <button id="lab-tab-mask" type="button" class="craft-tab" data-lab-tab="mask" role="tab" aria-selected="false" aria-controls="lab-stage" tabindex="-1">نص ورا الشخص (Mask)</button>
+                <button id="lab-tab-glow" type="button" class="craft-tab" data-lab-tab="glow" role="tab" aria-selected="false" aria-controls="lab-stage" tabindex="-1">Glow وإيقاع الريلز</button>
+              </div>
+              <p id="lab-desc" class="craft-lab__desc">
+                في المحور الثاني نوريلك الأوپسيون اللي تخلّيك تدير مونتاج سلس في CapCut PC حتى إذا البيسي تاعك ضعيف بزاف وبلا بلوكاج.
+              </p>
+              <div class="craft-lab__actions">
+                <button id="lab-proxy-toggle" type="button" class="btn btn--secondary btn--compact" data-proxy-toggle aria-pressed="true">إعدادات المحور 02: مفعّلة</button>
+                <button id="lab-jump-mod" type="button" class="btn btn--ghost btn--compact" data-jump-mod="1">شوف التفاصيل في المحور 02 ←</button>
+              </div>
+            </div>
 
-            <article class="why-col">
-              <svg class="why-col__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                <polyline points="2 17 12 22 22 17" />
-                <polyline points="2 12 12 17 22 12" />
-              </svg>
-              <h3 class="why-col__title">ما تعرف والو من الصفر؟</h3>
-              <p class="why-col__body">نبدا معاك من واجهة البرنامج والأساسيات وحدة بوحدة، وزيد نحطلك فيديوهات خام بلا مونتاج باش تطبق بيدك وتتمكّن من النهار الأول.</p>
-            </article>
+            <div id="lab-stage" class="craft-stage" role="tabpanel" aria-labelledby="lab-tab-proxy">
+              <div class="craft-stage__top" dir="ltr">
+                <span id="lab-mode-code" class="mono">MOD_02 · PROXY_FIX</span>
+                <span id="lab-status-pill" class="craft-stage__pill mono is-ok">60 FPS · SMOOTH</span>
+              </div>
 
-            <article class="why-col">
-              <svg class="why-col__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <polyline points="16 11 18 13 22 9" />
-              </svg>
-              <h3 class="why-col__title">كيفاش تولي تجيب لي كليون؟</h3>
-              <p class="why-col__body">بلا خدمة المهارة ما تخلصش: نعطيك تجربتي كاملة في المحور السادس كيفاش تقنع لي كليون، والمتفوقين يخدمو معايا ديريكت.</p>
-            </article>
+              <div id="lab-screen" class="craft-stage__screen" data-lab-mode="proxy" data-proxy-state="on">
+                <div class="craft-stage__visual">
+                  <span class="craft-stage__layer mono" dir="ltr" aria-hidden="true">CAPCUT PC · LIVE STAGE</span>
+                  <strong id="lab-screen-title" class="craft-stage__title">مونتاج سلس على PC ضعيف</strong>
+                  <span id="lab-screen-sub" class="craft-stage__sub">بلا بلوكاج في التايملاين · معاينة تفاعلية</span>
+                </div>
+
+                <div class="craft-timeline" dir="ltr" aria-hidden="true">
+                  <div class="craft-track">
+                    <span class="craft-track__lbl mono">V2 FX</span>
+                    <div class="craft-track__lane">
+                      <span class="craft-clip craft-clip--accent" style="width: 34%"></span>
+                      <span class="craft-clip" style="width: 28%"></span>
+                    </div>
+                  </div>
+                  <div class="craft-track">
+                    <span class="craft-track__lbl mono">V1 RAW</span>
+                    <div class="craft-track__lane">
+                      <span class="craft-clip" style="width: 58%"></span>
+                      <span class="craft-clip craft-clip--ok" style="width: 32%"></span>
+                    </div>
+                  </div>
+                  <div class="craft-track">
+                    <span class="craft-track__lbl mono">SFX</span>
+                    <div class="craft-track__lane">
+                      <span class="craft-clip craft-clip--ok" style="width: 22%"></span>
+                      <span class="craft-clip craft-clip--accent" style="width: 26%"></span>
+                    </div>
+                  </div>
+                  <span class="craft-playhead"></span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="compare-split" role="region" aria-label="الفرق بين التعلم العشوائي والدورة">
@@ -430,18 +457,18 @@
           </div>
 
           <div class="pack-bento">
-            <!-- Card 1: Audio Waveform -->
+            <!-- Card 1: Interactive Audio SFX Sampler -->
             <article class="pack-card">
               <div class="pack-card__head">
                 <h3 class="pack-card__title"><span dir="ltr">~500</span> مؤثر صوتي (SFX)</h3>
                 <p class="pack-card__body">تقريباً 500 صوت ومؤثر صوتي تستحقهم بزاف في كل مونتاج ريلز احترافي.</p>
               </div>
-              <div class="specimen-well" aria-hidden="true">
+              <div class="specimen-well">
                 <div class="specimen-well__top">
                   <span class="mono" dir="ltr">SFX_MASTER_PACK</span>
-                  <span class="mono specimen-badge" dir="ltr">500+ FILES</span>
+                  <span id="sfx-badge" class="mono specimen-badge" dir="ltr" aria-live="polite">500+ FILES</span>
                 </div>
-                <div class="eq-bars">
+                <div class="eq-bars" aria-hidden="true">
                   <span class="eq-bar" style="--h:38%;--d:0ms"></span>
                   <span class="eq-bar is-accent" style="--h:82%;--d:120ms"></span>
                   <span class="eq-bar" style="--h:52%;--d:240ms"></span>
@@ -455,7 +482,13 @@
                   <span class="eq-bar is-accent" style="--h:88%;--d:330ms"></span>
                   <span class="eq-bar" style="--h:46%;--d:450ms"></span>
                 </div>
-                <div class="specimen-meta mono" dir="ltr">Whoosh · Riser · Bass Hit · Pop UI</div>
+                <div class="sfx-pads" role="group" aria-label="تشغيل عينات صوتية" dir="ltr">
+                  <button type="button" class="sfx-pad mono" data-sfx-pad="whoosh" aria-label="تشغيل عينة صوت Whoosh">▶ Whoosh</button>
+                  <button type="button" class="sfx-pad mono" data-sfx-pad="riser" aria-label="تشغيل عينة صوت Riser">▶ Riser</button>
+                  <button type="button" class="sfx-pad mono" data-sfx-pad="hit" aria-label="تشغيل عينة صوت Bass Hit">▶ Bass Hit</button>
+                  <button type="button" class="sfx-pad mono" data-sfx-pad="pop" aria-label="تشغيل عينة صوت Pop UI">▶ Pop UI</button>
+                </div>
+                <span class="sfx-note">اضغط على أي زر باش تسمع عيّنة حية (صوت تجريبي للمونتاج)</span>
               </div>
             </article>
 
@@ -532,7 +565,7 @@
         </div>
       </section>
 
-      <!-- Section 6: Direct Work With Khero Spotlight -->
+      <!-- Section 6: Direct Work With Khero Spotlight + 3-Stage Career Pipeline -->
       <section id="work" class="band" aria-labelledby="work-title">
         <div class="container">
           <div class="spotlight">
@@ -546,6 +579,24 @@
               <button type="button" class="btn btn--primary" data-open-sheet="pay" data-track-source="spotlight">خلّص ديريكت (4,900 دج)</button>
               <button type="button" class="btn btn--secondary" data-open-sheet="chat" data-track-source="spotlight">احكي معايا</button>
             </div>
+
+            <ol class="work-path" aria-label="مسار الخدمة مع خيرو">
+              <li class="work-path__item">
+                <span class="work-path__step mono" dir="ltr">01</span>
+                <strong>تتعلّم وتطبق</strong>
+                <span>تكمل الـ 6 محاور وتخدم على الفيديوهات الخام بيدك.</span>
+              </li>
+              <li class="work-path__item">
+                <span class="work-path__step mono" dir="ltr">02</span>
+                <strong>نصحّحلك في الكروب</strong>
+                <span>تشارك خدمتك في الكروب الخاص ونجاوبك أنا شخصياً.</span>
+              </li>
+              <li class="work-path__item">
+                <span class="work-path__step mono" dir="ltr">03</span>
+                <strong>تخدم معايا ديريكت</strong>
+                <span>كي يطلع مستواك وتخدم سيرييو، نبعثلك لي كليون ونخدمو معايا.</span>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
@@ -556,6 +607,35 @@
           <div class="section__head">
             <h2 id="enroll-title" class="section__title">سجّل وابدأ اليوم، بلا فورمولار ولا تعمار</h2>
             <p class="section__sub">اختار الطريقة اللي تريحك: تخلّص ديريكت وتبعثلي الوصل، ولا تحكي معايا الأول في الواتساب ولا الإنستغرام.</p>
+          </div>
+
+          <div class="offer-stack" aria-label="ملخص كلش داخل في السعر">
+            <ul class="offer-stack__list">
+              <li>
+                <svg class="offer-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                <span>6 محاور <span dir="ltr">CapCut PC</span> + حل الـ <span dir="ltr">PC</span> الضعيف</span>
+              </li>
+              <li>
+                <svg class="offer-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                <span>الپاك كامل (<span dir="ltr">+500 SFX</span>، فيديوهات خام، انتقالات وخطوط)</span>
+              </li>
+              <li>
+                <svg class="offer-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                <span>تحديثات مستمرة (<span dir="ltr">2–3</span> مشاريع جديدة كل شهر + الترندات)</span>
+              </li>
+              <li>
+                <svg class="offer-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                <span>كروب خاص للأسئلة + فرصة تخدم معايا ديريكت</span>
+              </li>
+            </ul>
+            <div class="offer-stack__roi">
+              <div class="offer-stack__price">
+                <strong class="tabular">4,900 دج</strong>
+                <span class="tabular" dir="ltr">/ $18</span>
+                <span class="offer-stack__once">تخلّص مرة وحدة</span>
+              </div>
+              <p class="offer-stack__note">بلا اشتراك شهري ولا مصاريف زايدة — خدمة وحدة ولا زوج مع كليون ترجّعلك حق الدورة والباقي كامل ليك.</p>
+            </div>
           </div>
 
           <ol class="steps-strip" aria-label="خطوات التسجيل">
