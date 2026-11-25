@@ -10,7 +10,6 @@
   const STANDARD_EVENT_MAP = {
     ViewContent: 'ViewContent',
     QuickPayOpen: 'InitiateCheckout',
-    CopyPaymentID: 'InitiateCheckout',
     SendReceiptWhatsApp: 'Contact',
     SendReceiptInstagram: 'Contact',
     TalkFirstWhatsApp: 'Contact',
@@ -48,17 +47,30 @@
       !(function (w, d, t) {
         w.TiktokAnalyticsObject = t;
         const ttq = (w[t] = w[t] || []);
-        ttq.methods = ['page', 'track', 'identify', 'instances', 'debug', 'on', 'off', 'once', 'ready', 'alias', 'group', 'enableCookie', 'disableCookie'];
+        ttq.methods = ['page', 'track', 'identify', 'instances', 'debug', 'on', 'off', 'once', 'ready', 'alias', 'group', 'enableCookie', 'disableCookie', 'hold', 'revoke', 'consent'];
         ttq.setAndDefer = function (obj, method) {
           obj[method] = function () {
             obj.push([method].concat(Array.prototype.slice.call(arguments, 0)));
           };
         };
         for (let i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
-        ttq.load = function (id) {
+        ttq.instance = function (id) {
+          const e = ttq._i[id] || [];
+          for (let n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+          return e;
+        };
+        ttq.load = function (id, config) {
+          const r = 'https://analytics.tiktok.com/i18n/pixel/events.js';
+          ttq._i = ttq._i || {};
+          ttq._i[id] = [];
+          ttq._i[id]._u = r;
+          ttq._t = ttq._t || {};
+          ttq._t[id] = +new Date();
+          ttq._o = ttq._o || {};
+          ttq._o[id] = config || {};
           const s = d.createElement('script');
           s.async = true;
-          s.src = 'https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=' + encodeURIComponent(id) + '&lib=' + t;
+          s.src = r + '?sdkid=' + encodeURIComponent(id) + '&lib=' + t;
           const first = d.getElementsByTagName('script')[0];
           first.parentNode.insertBefore(s, first);
         };
@@ -130,12 +142,12 @@
     },
     {
       code: '05 / 06',
-      tag: '2–3 مشاريع/شهر',
+      tag: '2 إلى 3 مشاريع/شهر',
       title: 'تطبيقات ومشاريع كاملة',
       summary: 'تشوفني أنا شخصياً نخدم مشاريع كاملة من الأول حتى اللخر: نجيبو ستايلات مختلفين ونطبقوهم قدامك، ونزيدلك 2 حتى 3 مشاريع جديدة كل شهر.',
       points: [
         'تفهم وقتاش تستعمل كل تقنية من غير عشوائية',
-        'مشاريع بستيلات متنوعة تقدر دير كيفها للي كليون',
+        'مشاريع بستايلات متنوعة تقدر دير كيفها للي كليون',
         'إضافة مستمرة لمشاريع جديدة كل شهر في الدورة'
       ]
     },
@@ -166,7 +178,7 @@
       account: '1743900815',
       now: '$18',
       old: '$20',
-      copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل $18، وابعثلي صورة الوصل تحت.',
+      copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل \u2066$18\u2069، وابعثلي صورة الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ RedotPay ($18) وهاهو وصل الدفع:'
     }
   };
@@ -202,6 +214,7 @@
     let speedIdx = 0;
     let trackedStart = false;
     let userInitiated = false;
+    let mediaFailed = false;
     let dragging = false;
 
     function setLoading(loading) {
@@ -273,11 +286,23 @@
     function startPlayback() {
       userInitiated = true;
       setError(false);
+      if (mediaFailed || video.error || video.networkState === 3) {
+        mediaFailed = false;
+        video.load();
+      }
       if (video.readyState < 3) setLoading(true);
       const p = video.play();
       if (p && typeof p.catch === 'function') {
-        p.catch(() => {
+        p.catch((err) => {
           setLoading(false);
+          if (
+            mediaFailed ||
+            video.error ||
+            video.networkState === 3 ||
+            (err && err.name !== 'AbortError' && err.name !== 'NotAllowedError')
+          ) {
+            setError(true);
+          }
         });
       }
       if (!trackedStart) {
@@ -299,8 +324,21 @@
       syncPlayIcons(true);
       setError(false);
     });
-    video.addEventListener('playing', () => setLoading(false));
-    video.addEventListener('canplay', () => setLoading(false));
+    video.addEventListener('loadedmetadata', () => {
+      mediaFailed = false;
+      setError(false);
+      setLoading(false);
+    });
+    video.addEventListener('playing', () => {
+      mediaFailed = false;
+      setError(false);
+      setLoading(false);
+    });
+    video.addEventListener('canplay', () => {
+      mediaFailed = false;
+      setError(false);
+      setLoading(false);
+    });
     video.addEventListener('waiting', () => {
       if (userInitiated && !video.paused) setLoading(true);
     });
@@ -313,6 +351,7 @@
       setLoading(false);
     });
     video.addEventListener('error', () => {
+      mediaFailed = true;
       setLoading(false);
       syncPlayIcons(false);
       if (userInitiated) setError(true);
@@ -351,16 +390,25 @@
     }
 
     if (scrub) {
+      function stopDrag() {
+        dragging = false;
+        scrub.classList.remove('is-dragging');
+      }
       scrub.addEventListener('pointerdown', (e) => {
         dragging = true;
-        if (scrub.setPointerCapture) scrub.setPointerCapture(e.pointerId);
+        scrub.classList.add('is-dragging');
+        if (scrub.setPointerCapture) {
+          try {
+            scrub.setPointerCapture(e.pointerId);
+          } catch (_) {}
+        }
         seekToClientX(e.clientX);
       });
       scrub.addEventListener('pointermove', (e) => {
         if (dragging) seekToClientX(e.clientX);
       });
-      scrub.addEventListener('pointerup', () => { dragging = false; });
-      scrub.addEventListener('pointercancel', () => { dragging = false; });
+      scrub.addEventListener('pointerup', stopDrag);
+      scrub.addEventListener('pointercancel', stopDrag);
 
       scrub.addEventListener('keydown', (e) => {
         const dur = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : VSL_DURATION;
@@ -400,8 +448,10 @@
           document.exitFullscreen().catch(() => {});
         } else if (frame.requestFullscreen) {
           frame.requestFullscreen().catch(() => {});
-        } else if (video.webkitEnterFullscreen) {
-          video.webkitEnterFullscreen();
+        } else if (video.webkitEnterFullscreen && video.readyState >= 1) {
+          try {
+            video.webkitEnterFullscreen();
+          } catch (_) {}
         }
       });
     }
@@ -456,8 +506,13 @@
         tab.setAttribute('tabindex', active ? '0' : '-1');
         if (active) {
           if (focusTab) tab.focus();
-          if (typeof tab.scrollIntoView === 'function' && window.innerWidth <= 860) {
-            tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+          const rail = tab.parentElement;
+          if (rail && window.innerWidth <= 860 && typeof rail.scrollBy === 'function') {
+            const rRect = rail.getBoundingClientRect();
+            const tRect = tab.getBoundingClientRect();
+            const delta = tRect.left + tRect.width / 2 - (rRect.left + rRect.width / 2);
+            const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            rail.scrollBy({ left: delta, behavior: reduced ? 'auto' : 'smooth' });
           }
         }
       });
@@ -527,6 +582,7 @@
       setCopiedVisual(false);
       statusEls.forEach((el) => {
         el.textContent = '';
+        el.classList.remove('is-warn');
         el.hidden = true;
       });
 
@@ -545,9 +601,16 @@
         }
       });
 
+      const priceDir = method === 'redotpay' ? 'ltr' : 'rtl';
       labelEls.forEach((el) => { el.textContent = cfg.label; });
-      nowEls.forEach((el) => { el.textContent = cfg.now; });
-      oldEls.forEach((el) => { el.textContent = cfg.old; });
+      nowEls.forEach((el) => {
+        el.textContent = cfg.now;
+        el.setAttribute('dir', priceDir);
+      });
+      oldEls.forEach((el) => {
+        el.textContent = cfg.old;
+        el.setAttribute('dir', priceDir);
+      });
       valEls.forEach((el) => { el.textContent = cfg.account; });
       waLinks.forEach((link) => { link.href = WA_BASE + encodeURIComponent(cfg.waText); });
     }
@@ -581,32 +644,64 @@
       });
     }
 
-    function fallbackCopy(val, cb) {
+    function selectElementText(el) {
+      if (!el || !window.getSelection || !document.createRange) return;
+      try {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        if (sel) {
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      } catch (_) {}
+    }
+
+    function fallbackCopy(val) {
       const previousActive = document.activeElement;
       const ta = document.createElement('textarea');
       ta.value = val;
       ta.setAttribute('readonly', '');
       ta.style.position = 'fixed';
+      ta.style.top = '0';
+      ta.style.left = '-9999px';
       ta.style.opacity = '0';
       document.body.appendChild(ta);
+      let ok = false;
+      try {
+        ta.focus({ preventScroll: true });
+      } catch (_) {
+        ta.focus();
+      }
       ta.select();
       try {
-        document.execCommand('copy');
+        ta.setSelectionRange(0, val.length);
       } catch (_) {}
+      try {
+        ok = document.execCommand('copy') === true;
+      } catch (_) {
+        ok = false;
+      }
       document.body.removeChild(ta);
       if (previousActive && typeof previousActive.focus === 'function') {
-        previousActive.focus();
+        try {
+          previousActive.focus({ preventScroll: true });
+        } catch (_) {
+          previousActive.focus();
+        }
       }
-      cb();
+      return ok;
     }
 
-    function triggerCopy() {
+    function triggerCopy(sourceEl = null) {
       const cfg = PAYMENT_METHODS[currentMethod];
       const text = cfg.account;
-      const done = () => {
+
+      function onSuccess() {
         clearCopyTimers();
         setCopiedVisual(true);
         statusEls.forEach((el) => {
+          el.classList.remove('is-warn');
           el.textContent = cfg.copiedHint;
           el.hidden = false;
         });
@@ -618,20 +713,56 @@
         hintTimer = setTimeout(() => {
           statusEls.forEach((el) => {
             el.textContent = '';
+            el.classList.remove('is-warn');
             el.hidden = true;
           });
           hintTimer = null;
         }, 5500);
-      };
+      }
 
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+      function onManualFallback() {
+        clearCopyTimers();
+        setCopiedVisual(false);
+        const row = sourceEl && sourceEl.closest ? sourceEl.closest('.copy-row') : null;
+        const targetEl =
+          (row && row.querySelector('[data-pay-value]')) ||
+          valEls.find((el) => el.getClientRects().length > 0) ||
+          valEls[0];
+        if (targetEl) selectElementText(targetEl);
+        statusEls.forEach((el) => {
+          el.classList.add('is-warn');
+          el.textContent = 'المتصفح منع النسخ التلقائي — اضغط مطوّلاً على الرقم فوق وانسخو يدوياً.';
+          el.hidden = false;
+        });
+        hintTimer = setTimeout(() => {
+          statusEls.forEach((el) => {
+            el.textContent = '';
+            el.classList.remove('is-warn');
+            el.hidden = true;
+          });
+          hintTimer = null;
+        }, 7500);
+      }
+
+      if (window.isSecureContext && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard
+          .writeText(text)
+          .then(onSuccess)
+          .catch(() => (fallbackCopy(text) ? onSuccess() : onManualFallback()));
+      } else if (fallbackCopy(text)) {
+        onSuccess();
       } else {
-        fallbackCopy(text, done);
+        onManualFallback();
       }
     }
 
-    copyTriggers.forEach((el) => el.addEventListener('click', triggerCopy));
+    copyTriggers.forEach((el) => el.addEventListener('click', () => triggerCopy(el)));
+    valEls.forEach((el) => {
+      el.addEventListener('click', () => {
+        selectElementText(el);
+        triggerCopy(el);
+      });
+    });
     setMethod('baridimob');
   }
 
@@ -668,6 +799,7 @@
       sheet.hidden = false;
       pageRoot.inert = true;
       pageRoot.setAttribute('aria-hidden', 'true');
+      document.documentElement.classList.add('sheet-open');
       document.body.classList.add('sheet-open');
       requestAnimationFrame(() => sheet.classList.add('is-open'));
       if (closeBtn) closeBtn.focus();
@@ -682,6 +814,7 @@
       sheet.hidden = true;
       pageRoot.inert = false;
       pageRoot.removeAttribute('aria-hidden');
+      document.documentElement.classList.remove('sheet-open');
       document.body.classList.remove('sheet-open');
       if (lastTrigger && typeof lastTrigger.focus === 'function') {
         lastTrigger.focus();
@@ -708,9 +841,26 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !sheet.hidden) {
+      if (sheet.hidden) return;
+      if (e.key === 'Escape') {
         e.preventDefault();
         closeSheet();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusables = Array.from(
+          sheet.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')
+        ).filter((el) => !el.closest('[hidden]') && el.getClientRects().length > 0);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && (document.activeElement === first || !sheet.contains(document.activeElement))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (document.activeElement === last || !sheet.contains(document.activeElement))) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
   }
@@ -729,7 +879,12 @@
 
     document.querySelectorAll('[data-track]').forEach((el) => {
       el.addEventListener('click', () => {
-        trackEvent(el.getAttribute('data-track'));
+        const eventName = el.getAttribute('data-track');
+        if (!eventName) return;
+        trackEvent(eventName, {
+          channel: eventName.includes('Instagram') ? 'instagram' : 'whatsapp',
+          intent: eventName.includes('Receipt') ? 'receipt' : 'inquiry'
+        });
       });
     });
   }
