@@ -1,91 +1,114 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T10:53:30Z",
+  "generatedAt": "2026-11-25T11:56:00Z",
   "title": "Design System: KheroWeb",
   "extensions": {
     "colorMeta": {
-      "asphalt-ground": {
-        "role": "neutral",
-        "displayName": "Asphalt Ground",
-        "canonical": "#0B0B0D",
-        "tonalRamp": ["#050506", "#0B0B0D", "#16161A", "#25252B", "#3A3A43", "#5C5C69", "#8E8E9B", "#C8C8D0"]
-      },
-      "studio-bay": {
-        "role": "neutral",
-        "displayName": "Studio Bay",
-        "canonical": "#131317",
-        "tonalRamp": ["#09090B", "#131317", "#1F1F26", "#31313B", "#494957", "#6E6E80", "#9C9CAC", "#D2D2DC"]
-      },
-      "elevated-bay": {
-        "role": "neutral",
-        "displayName": "Elevated Bay",
-        "canonical": "#191920",
-        "tonalRamp": ["#0D0D11", "#191920", "#262631", "#383847", "#525266", "#777790", "#A5A5BA", "#D6D6E3"]
-      },
-      "hairline-rule": {
-        "role": "neutral",
-        "displayName": "Hairline Rule",
-        "canonical": "#28272B",
-        "tonalRamp": ["#111113", "#1C1B1E", "#28272B", "#3B3940", "#55535C", "#787682", "#A4A2AD", "#D4D3DA"]
-      },
-      "hairline-strong": {
-        "role": "neutral",
-        "displayName": "Hairline Strong",
-        "canonical": "#4A4842",
-        "tonalRamp": ["#191816", "#2A2925", "#3B3934", "#4A4842", "#6A675F", "#8E8B82", "#B5B3AB", "#DCDBD5"]
-      },
-      "warm-bone": {
-        "role": "neutral",
-        "displayName": "Warm Bone",
-        "canonical": "#F0ECE1",
-        "tonalRamp": ["#2A2824", "#47443E", "#69655C", "#8E897E", "#B3AEA1", "#D4CFC4", "#E5E0D5", "#F0ECE1"]
-      },
-      "muted-bone": {
-        "role": "neutral",
-        "displayName": "Muted Bone",
-        "canonical": "#B5AFA2",
-        "tonalRamp": ["#201F1C", "#3A3732", "#57534B", "#787369", "#989286", "#B5AFA2", "#D0CBC0", "#E8E4DC"]
-      },
-      "signal-vermilion": {
+      "cinema-vermilion": {
         "role": "primary",
-        "displayName": "Signal Vermilion",
-        "canonical": "#FF4D1A",
-        "tonalRamp": ["#330E03", "#661C07", "#992A0A", "#CC390E", "#FF4D1A", "#FF734B", "#FFA085", "#FFD2C5"]
+        "displayName": "Cinema Vermilion",
+        "canonical": "#FF5520",
+        "tonalRamp": ["#330E03", "#661C07", "#992B0A", "#CC3D12", "#FF5520", "#FF794D", "#FFA488", "#FFD5C7"]
       },
       "vermilion-hover": {
         "role": "primary",
         "displayName": "Vermilion Hover",
-        "canonical": "#FF6234",
-        "tonalRamp": ["#361207", "#6B240F", "#A13717", "#D6491F", "#FF6234", "#FF8561", "#FFAF97", "#FFD9CD"]
+        "canonical": "#FF6B3D",
+        "tonalRamp": ["#381408", "#6F2811", "#A63D19", "#DC5222", "#FF6B3D", "#FF8B66", "#FFB299", "#FFDBD0"]
+      },
+      "confirm-emerald": {
+        "role": "secondary",
+        "displayName": "Confirm Emerald",
+        "canonical": "#22C55E",
+        "tonalRamp": ["#062B14", "#0C5226", "#137A3A", "#1AA24D", "#22C55E", "#52D380", "#89E2A8", "#C8F3D7"]
+      },
+      "obsidian-ground": {
+        "role": "neutral",
+        "displayName": "Obsidian Ground",
+        "canonical": "#07080B",
+        "tonalRamp": ["#030305", "#07080B", "#111319", "#1E222D", "#33394A", "#565E75", "#8991A8", "#C5C9D6"]
+      },
+      "velvet-slate": {
+        "role": "neutral",
+        "displayName": "Velvet Slate",
+        "canonical": "#111319",
+        "tonalRamp": ["#08090C", "#111319", "#1B1E28", "#2B3040", "#424961", "#656E8A", "#959CB3", "#CCD0DD"]
+      },
+      "lifted-bay": {
+        "role": "neutral",
+        "displayName": "Lifted Bay",
+        "canonical": "#171A23",
+        "tonalRamp": ["#0B0C11", "#171A23", "#232836", "#353C52", "#4E5773", "#727C99", "#A0A8BE", "#D2D6E2"]
+      },
+      "recessed-well": {
+        "role": "neutral",
+        "displayName": "Recessed Well",
+        "canonical": "#0C0D12",
+        "tonalRamp": ["#050608", "#0C0D12", "#161822", "#252838", "#3B4057", "#5D6380", "#8D93AB", "#C7CBD7"]
+      },
+      "hairline-edge": {
+        "role": "neutral",
+        "displayName": "Hairline Edge",
+        "canonical": "rgba(255, 255, 255, 0.08)",
+        "tonalRamp": ["#0B0C0F", "#15171C", "#22252E", "#343846", "#505569", "#767B91", "#A6AAB9", "#D8DAE2"]
+      },
+      "specular-rim": {
+        "role": "neutral",
+        "displayName": "Specular Rim",
+        "canonical": "rgba(255, 255, 255, 0.15)",
+        "tonalRamp": ["#111318", "#1E2129", "#2E323E", "#444959", "#656B7F", "#8E94A6", "#B9BDC8", "#E3E5EA"]
+      },
+      "warm-bone": {
+        "role": "neutral",
+        "displayName": "Warm Bone",
+        "canonical": "#F5F2EB",
+        "tonalRamp": ["#2B2A27", "#494742", "#6C6962", "#918D83", "#B8B3A7", "#D8D4CA", "#EAE6DD", "#F5F2EB"]
+      },
+      "cool-slate-ink": {
+        "role": "neutral",
+        "displayName": "Cool Slate Ink",
+        "canonical": "#A4ABB8",
+        "tonalRamp": ["#1D2024", "#343942", "#505663", "#6F7685", "#8B92A0", "#A4ABB8", "#C2C7D1", "#E2E5EB"]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Monumental Arabic RTL hero headline only (no eyebrow)." },
-      "headline": { "displayName": "Headline", "purpose": "Primary section titles anchored above hairline bands." },
-      "title": { "displayName": "Title", "purpose": "Module names, bay titles, and comparison headers." },
-      "body": { "displayName": "Body", "purpose": "First-person Algerian Darija copy bounded to 62ch-72ch." },
-      "label": { "displayName": "Label", "purpose": "Currency labels, module tags, and captions (>= 13.6px floor)." },
-      "mono": { "displayName": "Mono", "purpose": "Tabular Chivo Mono for prices, timecodes, module indices, and transfer IDs." }
+      "display": { "displayName": "Display", "purpose": "Centered hero headline only, balanced without eyebrows." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles leading directly into Bento/stage blocks." },
+      "title": { "displayName": "Title", "purpose": "Module inspector headline, Bento titles, and sheet title." },
+      "body": { "displayName": "Body", "purpose": "First-person Algerian Darija prose constrained to 64ch-72ch." },
+      "label": { "displayName": "Label", "purpose": "Currency tags, timestamps, pills, and captions (>= 13.76px)." },
+      "mono": { "displayName": "Mono", "purpose": "Tabular Chivo Mono for timecodes, indices 01-06, speeds, and account IDs." }
     },
     "shadows": [
       {
+        "name": "shadow-cinema",
+        "value": "0 28px 80px -18px rgba(0, 0, 0, 0.92), 0 10px 28px -8px rgba(0, 0, 0, 0.72)",
+        "purpose": "Neutral deep elevation separating the 16:9 VSL cinema stage over the obsidian canvas."
+      },
+      {
         "name": "vsl-play-overlay",
-        "value": "0 12px 32px rgba(0, 0, 0, 0.65)",
-        "purpose": "Isolates the primary video play trigger cleanly over the bright white Miro board poster frame."
+        "value": "0 14px 36px rgba(0, 0, 0, 0.68)",
+        "purpose": "Separates the play CTA cleanly over bright frames of Khero's VSL poster."
+      },
+      {
+        "name": "sheet-panel",
+        "value": "0 28px 80px rgba(0, 0, 0, 0.78)",
+        "purpose": "Foreground elevation for the Quick-Pay and Human-Chat dialog sheet."
       }
     ],
     "motion": [
       {
         "name": "ease-out-expo",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Snappy NLE playhead glide, chevron rotation, and sticky mobile bar reveal."
+        "purpose": "Slide-up dialog sheet reveal, mobile sticky bar transition, and FAQ chevron rotation."
       }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "480px" },
+      { "name": "xs", "value": "480px" },
+      { "name": "sm", "value": "600px" },
       { "name": "md", "value": "767px" },
-      { "name": "lg", "value": "920px" },
-      { "name": "xl", "value": "1240px" }
+      { "name": "lg", "value": "860px" },
+      { "name": "xl", "value": "1120px" }
     ]
   },
   "components": [
@@ -93,94 +116,96 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Main conversion CTA ('خلّص ديريكت' / 'ابعثلي الوصل') with 46px height and 3px micro-chamfer.",
-      "html": "<button class=\"ds-btn-primary\" dir=\"rtl\"><span>خلّص ديريكت</span><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 12H5\"/><path d=\"m12 19-7-7 7-7\"/></svg></button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;padding:11px 20px;background:#FF4D1A;color:#0B0B0D;border:1px solid #FF4D1A;border-radius:3px;font-family:'Alexandria',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:background-color .18s ease,transform .18s cubic-bezier(0.16,1,0.3,1)}.ds-btn-primary:hover{background:#FF6234;border-color:#FF6234}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #FF4D1A;outline-offset:3px}"
+      "description": "Primary conversion CTA ('خلّص ديريكت' / 'ابعثلي الوصل') with 48px touch height and 10px radius.",
+      "html": "<button class=\"ds-btn-primary\" dir=\"rtl\"><span>خلّص ديريكت</span><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 12H5\"/><path d=\"m12 19-7-7 7-7\"/></svg></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;background:#FF5520;color:#07080B;border:1px solid #FF5520;border-radius:10px;font-family:'Alexandria',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:background-color .18s ease,transform .18s cubic-bezier(0.16,1,0.3,1)}.ds-btn-primary:hover{background:#FF6B3D;border-color:#FF6B3D}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #FF5520;outline-offset:3px}"
     },
     {
       "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Human-first conversation CTA ('احكي معايا') with hairline strong border.",
+      "description": "Direct conversation and secondary route CTA ('احكي معايا') on Velvet Slate with specular border.",
       "html": "<button class=\"ds-btn-secondary\" dir=\"rtl\">احكي معايا</button>",
-      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 20px;background:transparent;color:#F0ECE1;border:1px solid #4A4842;border-radius:3px;font-family:'Alexandria',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:background-color .18s ease,border-color .18s ease}.ds-btn-secondary:hover{background:#191920;border-color:#F0ECE1}.ds-btn-secondary:focus-visible{outline:2px solid #FF4D1A;outline-offset:3px}"
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;background:#111319;color:#F5F2EB;border:1px solid rgba(255,255,255,0.15);border-radius:10px;font-family:'Alexandria',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:background-color .18s ease,border-color .18s ease}.ds-btn-secondary:hover{background:#171A23;border-color:#F5F2EB}.ds-btn-secondary:focus-visible{outline:2px solid #FF5520;outline-offset:3px}"
     },
     {
-      "name": "Method Tab Active",
+      "name": "VSL Chapter Chip",
+      "kind": "chip",
+      "description": "Interactive video timestamp jump chip highlighting the current playback section.",
+      "html": "<button class=\"ds-chapter-chip\" dir=\"rtl\"><span class=\"ds-chapter-time\" dir=\"ltr\">00:34</span><span>خفايا و PC ضعيف</span></button>",
+      "css": ".ds-chapter-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 14px;background:#171A23;color:#F5F2EB;border:1px solid #FF5520;border-radius:10px;font-family:'Alexandria',sans-serif;font-size:14px;font-weight:700;cursor:pointer}.ds-chapter-time{font-family:'Chivo Mono',monospace;font-size:13.76px;color:#FF5520;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Module Pill Tab",
+      "kind": "chip",
+      "description": "Single-stage curriculum selector pill in the 6-module tablist.",
+      "html": "<button class=\"ds-mod-pill\" dir=\"rtl\"><span class=\"ds-mod-num\">01</span><span class=\"ds-mod-name\">أساسيات المونتاج</span></button>",
+      "css": ".ds-mod-pill{display:flex;flex-direction:column;justify-content:space-between;gap:6px;min-height:68px;min-width:160px;padding:12px 14px;background:#171A23;color:#F5F2EB;border:1px solid #FF5520;border-radius:12px;text-align:start;cursor:pointer;font-family:'Alexandria',sans-serif}.ds-mod-num{font-family:'Chivo Mono',monospace;font-size:14px;font-weight:700;color:#FF5520}.ds-mod-name{font-size:14.4px;font-weight:800}"
+    },
+    {
+      "name": "Tactile Bento Card + Recessed Well",
+      "kind": "card",
+      "refersTo": "bento-card",
+      "description": "Velvet Slate showcase card housing a borderless #0C0D12 specimen well.",
+      "html": "<div class=\"ds-bento\" dir=\"rtl\"><h3 class=\"ds-bento-title\">~500 مؤثر صوتي (SFX)</h3><div class=\"ds-well\"><span class=\"ds-well-ok\">500+ FILES</span></div></div>",
+      "css": ".ds-bento{display:flex;flex-direction:column;gap:14px;padding:24px;background:#111319;color:#F5F2EB;border:1px solid rgba(255,255,255,0.08);border-top-color:rgba(255,255,255,0.15);border-radius:18px;font-family:'Alexandria',sans-serif}.ds-bento-title{margin:0;font-size:18px;font-weight:800}.ds-well{padding:16px 18px;background:#0C0D12;border-radius:12px}.ds-well-ok{font-family:'Chivo Mono',monospace;font-size:14px;font-weight:700;color:#22C55E}"
+    },
+    {
+      "name": "Payment Method Tab Active",
       "kind": "chip",
       "refersTo": "method-tab-active",
-      "description": "Active BaridiMob / RedotPay WAI-ARIA tab inside #enroll.",
+      "description": "Active BaridiMob / RedotPay WAI-ARIA tab inside both #enroll and the Quick-Pay sheet.",
       "html": "<button class=\"ds-method-tab\" dir=\"rtl\"><span>BaridiMob</span><span class=\"ds-mono\">4,900 دج</span></button>",
-      "css": ".ds-method-tab{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-width:210px;min-height:48px;padding:10px 14px;background:#FF4D1A;color:#0B0B0D;border:1px solid #FF4D1A;border-radius:3px;font-family:'Alexandria',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer}.ds-mono{font-variant-numeric:tabular-nums;font-weight:700}"
+      "css": ".ds-method-tab{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-width:210px;min-height:48px;padding:10px 15px;background:#FF5520;color:#07080B;border:1px solid #FF5520;border-radius:10px;font-family:'Alexandria',sans-serif;font-size:14.7px;font-weight:800;cursor:pointer}.ds-mono{font-variant-numeric:tabular-nums;font-weight:700}"
     },
     {
-      "name": "Offer Price Cell",
-      "kind": "card",
-      "refersTo": "offer-cell",
-      "description": "Dual-currency ledger cell pairing Signal Vermilion active price with muted strikethrough anchor.",
-      "html": "<div class=\"ds-offer-cell\" dir=\"rtl\"><span class=\"ds-offer-label\">BaridiMob</span><div class=\"ds-offer-vals\"><strong class=\"ds-offer-now\">4,900 دج</strong><span class=\"ds-offer-old\">5,400 دج</span></div></div>",
-      "css": ".ds-offer-cell{display:flex;flex-direction:column;gap:4px;padding:14px 16px;background:#0B0B0D;color:#F0ECE1;border:1px solid #28272B;border-radius:3px;font-family:'Alexandria',sans-serif}.ds-offer-label{font-size:13.6px;font-weight:700;color:#B5AFA2}.ds-offer-vals{display:flex;align-items:baseline;gap:9px;font-variant-numeric:tabular-nums}.ds-offer-now{font-size:21px;font-weight:900;color:#FF4D1A}.ds-offer-old{font-size:13.8px;color:#B5AFA2;text-decoration:line-through}"
-    },
-    {
-      "name": "Timeline Track Button",
-      "kind": "custom",
-      "description": "Interactive NLE module track cell under the Signal Vermilion playhead.",
-      "html": "<button class=\"ds-track\" dir=\"rtl\"><span class=\"ds-track-bar\"></span><span class=\"ds-track-num\">01</span><span class=\"ds-track-name\">أساسيات المونتاج</span></button>",
-      "css": ".ds-track{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:160px;min-height:76px;padding:15px 14px;background:#0B0B0D;color:#F0ECE1;border:1px solid #28272B;text-align:right;cursor:pointer;font-family:'Alexandria',sans-serif}.ds-track-bar{position:absolute;top:0;left:0;right:0;height:3px;background:#FF4D1A}.ds-track-num{font-family:'Chivo Mono',monospace;font-size:13.6px;font-weight:700;color:#FF4D1A}.ds-track-name{font-size:14px;font-weight:800}"
-    },
-    {
-      "name": "Top Navigation Bar",
+      "name": "Sticky Obsidian Header",
       "kind": "nav",
-      "description": "Hairline-partitioned sticky top studio bar with tabular timecode and compact primary CTA.",
-      "html": "<nav class=\"ds-topbar\" dir=\"rtl\"><span class=\"ds-brand\">KHV · كون سبيسيال</span><div class=\"ds-links\"><a href=\"#curriculum\">البرنامج</a><a href=\"#pack\">الپاك</a><a href=\"#faq\">الأسئلة</a></div><span class=\"ds-timecode\">02:55</span></nav>",
-      "css": ".ds-topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:58px;padding:0 18px;background:#0B0B0D;color:#F0ECE1;border-bottom:1px solid #28272B;font-family:'Alexandria',sans-serif}.ds-brand{font-size:14px;font-weight:800}.ds-links{display:flex;gap:24px;font-size:14px;font-weight:600;color:#B5AFA2}.ds-links a{color:inherit;text-decoration:none}.ds-links a:hover{color:#F0ECE1}.ds-timecode{font-family:'Chivo Mono',monospace;font-size:13.6px;color:#B5AFA2;padding:4px 9px;background:#131317;border:1px solid #28272B;border-radius:3px}"
+      "description": "Translucent sticky navigation bar with centered section anchors and Quick-Pay CTA.",
+      "html": "<nav class=\"ds-topbar\" dir=\"rtl\"><span class=\"ds-brand\">KHV · كون سبيسيال</span><div class=\"ds-links\"><a href=\"#why\">المميزات</a><a href=\"#curriculum\">البرنامج</a><a href=\"#pack\">الپاك</a></div><button class=\"ds-cta\">خلّص ديريكت</button></nav>",
+      "css": ".ds-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px;padding:0 24px;background:rgba(7,8,11,0.88);color:#F5F2EB;border-bottom:1px solid rgba(255,255,255,0.08);font-family:'Alexandria',sans-serif}.ds-brand{font-size:14.2px;font-weight:700;color:#A4ABB8}.ds-links{display:flex;gap:24px;font-size:14.4px;font-weight:600;color:#A4ABB8}.ds-links a{color:inherit;text-decoration:none}.ds-links a:hover{color:#F5F2EB}.ds-cta{min-height:44px;padding:8px 16px;background:#FF5520;color:#07080B;border:0;border-radius:10px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer}"
     }
   ],
   "narrative": {
-    "northStar": "Widescreen NLE Mastering Desk",
-    "overview": "KheroWeb treats a single-product CapCut PC sales funnel like a physical editing suite rather than a marketing SaaS template. Deep matte asphalt surfaces (#0B0B0D), 1px architectural hairlines (#28272B), warm bone typography (#F0ECE1), and sharp 3px micro-chamfer corners create immediate technical authority on desktop and Algerian 4G mobile screens without visual noise, glassmorphism, or neon glow.\n\nEvery visual element earns its place by making Khero's 2m 55s video pitch, 6-module roadmap, الپاك production manifest, and zero-form BaridiMob/RedotPay transfer steps faster to trust and act on. Primary conversion energy focuses onto one surgical Signal Vermilion (#FF4D1A) accent reserved strictly for active prices, active playhead state, focus rings, and خلّص ديريكت.",
+    "northStar": "Midnight Cinema & Tactile Bento",
+    "overview": "KheroWeb frames a single-product CapCut PC video-editing landing page inside an unboxed obsidian screening room rather than a boxed spreadsheet template. Deep obsidian matte surfaces (#07080B), Velvet Slate Bento modules (#111319) lifted with subtle specular top highlights (rgba(255, 255, 255, 0.15)), borderless recessed specimen wells (#0C0D12), and calm rounded geometry (10px, 12px, 18px) keep focus glued to Khero's 16:9 VSL pitch, single-stage curriculum inspector, tactile الپاك showcases, and slide-up BaridiMob/RedotPay Quick-Pay sheet on Algerian 4G mobile devices.\n\nEvery conversion lever works without friction or fabricated hype: clickable VSL timestamp chapters (00:00, 00:34, 01:24, 02:13) and speed toggle (1x–1.5x), zero duplicated curriculum lists, pure CSS/HTML visual proofs inside الپاك, and an accessible modal sheet ready from any خلّص ديريكت or احكي معايا button.",
     "keyCharacteristics": [
-      "Matte asphalt and recessed studio bays separated by 1px architectural rules rather than drop shadows.",
-      "Self-hosted Alexandria (400–900) Arabic/Latin typography paired with tabular Chivo Mono (400–700) for timecodes, prices, and 20-digit RIP numbers.",
-      "Single surgical accent (#FF4D1A) carrying conversion CTAs and active timeline indicators while decorative chrome stays monochrome.",
-      "Mobile-first >= 44px touch geometry across video scrubbing, tab switching, clipboard copying, and dual-door WhatsApp/Instagram links."
+      "Unboxed full-bleed Obsidian canvas (#07080B) layered via tonal stepping (#111319 Bento surface, #171A23 elevated sheet/inspector, #0C0D12 recessed specimen wells) with crisp 4-sided hairlines (rgba(255,255,255,0.08)) and neutral black elevation shadows.",
+      "Self-hosted Alexandria (400–900) Arabic RTL typography paired with tabular Chivo Mono (400–700) reserved strictly for real numeric measurements, timecodes, module indices, prices, and RIP/ID codes.",
+      "Cinema Vermilion (#FF5520) reserved for active prices, active playback/chapter/module states, keyboard focus outlines, text selection, and خلّص ديريكت, supported by Confirm Emerald (#22C55E) strictly on copy-confirmation and outcome checkmarks.",
+      "Responsive >= 44px x 44px interactive geometry (48px primary buttons, 44px compact controls, chapter chips, video fullscreen/controls, copy code button, modal close) and >= 0.85rem legibility floor across every specimen and mobile label."
     ],
     "rules": [
       {
         "name": "The Surgical Vermilion Rule",
-        "body": "Signal Vermilion (#FF4D1A) never decorates static icons, dividers, chevrons, or section headings; it marks only live prices, active playheads, keyboard focus rings, and primary payment actions.",
+        "body": "Cinema Vermilion (#FF5520) never decorates passive icons or dividers; it highlights only live prices, active curriculum/chapter state, focus outlines, and primary enrollment actions.",
         "section": "colors"
       },
       {
-        "name": "The Hairline Partition Rule",
-        "body": "Depth and grouping come from recessed tonal shifts (#0B0B0D vs #131317) and 1px #28272B structural rules, never glowing halos or multi-layered borders.",
+        "name": "The Neutral Cinema Shadow Rule",
+        "body": "Elevation shadows remain deep neutral black (--shadow-cinema, .vsl-overlay__btn, .sheet__panel) — never colored chromatic halos around dark boxes.",
         "section": "colors"
       },
       {
         "name": "The Zero-Eyebrow Rule",
-        "body": "Headings (<h1>, <h2>, <h3>) never carry a small label or kicker above them; each heading opens its block directly with weight and contrast alone.",
+        "body": "Headings (<h1>, <h2>, <h3>) never carry a small kicker or label above them; metadata badges sit alongside or below the heading.",
         "section": "typography"
       },
       {
-        "name": "The Tabular Data Rule",
-        "body": "Monospace (Chivo Mono) appears only on real numeric measurements, timecodes, and account numbers, never as decorative prose labels.",
+        "name": "The Legible Floor Rule",
+        "body": "Every element across desktop, mobile 390px, and specimen wells renders at >= 0.85rem (>= 13.6px).",
         "section": "typography"
-      },
-      {
-        "name": "The Flat-By-Default Rule",
-        "body": "Interface containers sit flush in a 1px-ruled editorial grid without ambient card shadows or 4px offset block shadows.",
-        "section": "elevation"
       }
     ],
     "dos": [
-      "Do keep 44px minimum touch targets (44px x 44px on video icons, 44px height on copy/compact buttons and scrub slider hit box) and full ARIA keyboard parity (role=\"tablist\", role=\"slider\", inert on hidden overlays/sticky bar).",
-      "Do reserve #FF4D1A strictly for prices, primary enrollment actions, active timeline playhead, focus outlines, and selection.",
-      "Do write natural first-person Algerian Darija (\"أنا خيرو\", \"نعلّمك\", \"احكي معايا\", \"لي كليون\") and always spell الپاك with three-dot peh (پ)."
+      "Do keep >= 44px x 44px touch geometry and logical RTL CSS properties (margin-inline, padding-inline, text-align: start) on every control, chapter chip, copy button, and modal close button.",
+      "Do reserve #FF5520 for active prices, primary actions, active chapters/tabs, and focus rings, and #22C55E strictly for copy confirmation and course checkmarks.",
+      "Do preserve natural first-person Algerian Darija (\"أنا خيرو\", \"نعلّمك\", \"احكي معايا\", \"لي كليون\") and always spell الپاك with three-dot peh (پ)."
     ],
     "donts": [
-      "Don't place kickers/eyebrows above headings, nest more than two bordered containers (enroll-deck > transfer-box > hairline row), or use one-sided box-shadow bars inside rounded containers.",
-      "Don't re-introduce Name/Phone <input> forms, profile picture.jpg, fake testimonials, or external font CDN requests.",
-      "Don't substitute Unicode glyphs/emojis (▶, ✓, ✕) for stroked 2px inline SVG icons."
+      "Don't place kickers/eyebrows above headings, add one-sided borders inside rounded cards, use colored glow box-shadows, or nest bordered cards inside bordered cards.",
+      "Don't drop text sizes below 0.85rem (13.6px) or pack bordered boxes with less than 1rem padding.",
+      "Don't re-introduce Name/Phone <input> forms, profile picture.jpg, fake testimonials, external font CDNs, or Unicode icon characters."
     ]
   }
 }
