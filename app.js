@@ -338,7 +338,12 @@
         tab.classList.toggle('is-active', active);
         tab.setAttribute('aria-selected', String(active));
         tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (active && focusTab) tab.focus();
+        if (active) {
+          if (focusTab) tab.focus();
+          if (typeof tab.scrollIntoView === 'function' && window.innerWidth <= 860) {
+            tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+          }
+        }
       });
 
       inspector.setAttribute('aria-labelledby', tabs[safeIdx].id);
@@ -355,8 +360,8 @@
       tab.addEventListener('click', () => selectModule(idx));
       tab.addEventListener('keydown', (e) => {
         let next = null;
-        if (e.key === 'ArrowLeft') next = idx + 1;
-        else if (e.key === 'ArrowRight') next = idx - 1;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = idx + 1;
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = idx - 1;
         else if (e.key === 'Home') next = 0;
         else if (e.key === 'End') next = tabs.length - 1;
         if (next !== null) {
