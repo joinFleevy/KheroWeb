@@ -496,7 +496,7 @@ button {
   object-fit: contain;
 }
 
-/* Deep cinema vignette harmonizing bright video poster onto dark canvas */
+/* Subtle scrim matching dark-studio VSL poster */
 .vsl-overlay {
   position: absolute;
   inset: 0;
@@ -505,8 +505,8 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  background: radial-gradient(circle at 50% 44%, rgba(8, 9, 12, 0.28) 0%, rgba(8, 9, 12, 0.74) 85%),
-    linear-gradient(180deg, rgba(8, 9, 12, 0.52) 0%, rgba(8, 9, 12, 0.2) 38%, rgba(8, 9, 12, 0.82) 100%);
+  background: radial-gradient(circle at 50% 45%, rgba(8, 9, 12, 0.08) 0%, rgba(8, 9, 12, 0.54) 88%),
+    linear-gradient(180deg, rgba(8, 9, 12, 0.16) 0%, rgba(8, 9, 12, 0.12) 45%, rgba(8, 9, 12, 0.68) 100%);
   border: 0;
   padding: 1rem;
   cursor: pointer;
@@ -546,6 +546,53 @@ button {
   color: var(--ink);
   font-size: 0.88rem;
   font-weight: 600;
+}
+
+.vsl-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(8, 9, 12, 0.48);
+  pointer-events: none;
+}
+
+.vsl-loader[hidden] {
+  display: none;
+}
+
+@keyframes vslSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vsl-loader__spin {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg, transparent 25%, var(--accent));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: vslSpin 0.8s linear infinite;
+}
+
+.vsl-error {
+  position: absolute;
+  inset: auto 1rem 1rem 1rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background-color: rgba(8, 9, 12, 0.92);
+  border: 1px solid var(--accent);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.vsl-error[hidden] {
+  display: none;
 }
 
 /* Sleek Borderless VSL Transport Bar */
@@ -1144,6 +1191,12 @@ button {
   background-color: rgba(245, 242, 235, 0.24);
   transform-origin: bottom;
   animation: eqPulse 1.7s ease-in-out var(--d, 0ms) infinite;
+  animation-play-state: paused;
+}
+
+.pack-card:hover .eq-bar,
+.pack-card:focus-within .eq-bar {
+  animation-play-state: running;
 }
 
 .eq-bar.is-accent {
@@ -1533,6 +1586,18 @@ button {
   background-color: var(--success);
   border-color: var(--success);
   color: var(--accent-ink);
+}
+
+.copy-feedback {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--success);
+  line-height: 1.5;
+}
+
+.copy-feedback[hidden] {
+  display: none;
 }
 
 .receipt-block {

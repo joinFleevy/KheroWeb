@@ -1,18 +1,82 @@
 (() => {
   'use strict';
 
-  // Ad Pixel hooks: fill IDs when Khero launches IG/TikTok campaigns
+  // Ad Pixel IDs: paste Meta Pixel ID or TikTok Pixel ID here when launching campaigns
   const TRACKING = {
     metaPixelId: '',
     tiktokPixelId: ''
   };
 
-  function trackEvent(name, params = {}) {
-    if (TRACKING.metaPixelId && typeof window.fbq === 'function') {
-      window.fbq('trackCustom', name, params);
+  const STANDARD_EVENT_MAP = {
+    ViewContent: 'ViewContent',
+    QuickPayOpen: 'InitiateCheckout',
+    CopyPaymentID: 'InitiateCheckout',
+    SendReceiptWhatsApp: 'Contact',
+    SendReceiptInstagram: 'Contact',
+    TalkFirstWhatsApp: 'Contact',
+    TalkFirstInstagram: 'Contact'
+  };
+
+  function initPixels() {
+    const metaId = TRACKING.metaPixelId.trim();
+    if (metaId && typeof window.fbq !== 'function') {
+      /* eslint-disable */
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = true;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      /* eslint-enable */
+      window.fbq('init', metaId);
+      window.fbq('track', 'PageView');
     }
-    if (TRACKING.tiktokPixelId && typeof window.ttq === 'object' && typeof window.ttq.track === 'function') {
-      window.ttq.track(name, params);
+
+    const ttId = TRACKING.tiktokPixelId.trim();
+    if (ttId && !window.ttq) {
+      /* eslint-disable */
+      !(function (w, d, t) {
+        w.TiktokAnalyticsObject = t;
+        const ttq = (w[t] = w[t] || []);
+        ttq.methods = ['page', 'track', 'identify', 'instances', 'debug', 'on', 'off', 'once', 'ready', 'alias', 'group', 'enableCookie', 'disableCookie'];
+        ttq.setAndDefer = function (obj, method) {
+          obj[method] = function () {
+            obj.push([method].concat(Array.prototype.slice.call(arguments, 0)));
+          };
+        };
+        for (let i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+        ttq.load = function (id) {
+          const s = d.createElement('script');
+          s.async = true;
+          s.src = 'https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=' + encodeURIComponent(id) + '&lib=' + t;
+          const first = d.getElementsByTagName('script')[0];
+          first.parentNode.insertBefore(s, first);
+        };
+      })(window, document, 'ttq');
+      /* eslint-enable */
+      window.ttq.load(ttId);
+      window.ttq.page();
+    }
+  }
+
+  function trackEvent(name, params = {}) {
+    const stdName = STANDARD_EVENT_MAP[name];
+    if (TRACKING.metaPixelId.trim() && typeof window.fbq === 'function') {
+      if (stdName) window.fbq('track', stdName, params);
+      else window.fbq('trackCustom', name, params);
+    }
+    if (TRACKING.tiktokPixelId.trim() && typeof window.ttq === 'object' && typeof window.ttq.track === 'function') {
+      window.ttq.track(stdName || name, params);
     }
   }
 
@@ -94,6 +158,7 @@
       account: '00799999004277833193',
       now: '4,900 دج',
       old: '5,400 دج',
+      copiedHint: 'تم نسخ RIP — افتح تطبيق BaridiMob، حوّل 4,900 دج، وابعثلي صورة الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ BaridiMob (4,900 دج) وهاهو وصل الدفع:'
     },
     redotpay: {
@@ -101,6 +166,7 @@
       account: '1743900815',
       now: '$18',
       old: '$20',
+      copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل $18، وابعثلي صورة الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ RedotPay ($18) وهاهو وصل الدفع:'
     }
   };
@@ -115,10 +181,12 @@
     return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
 
-  // 1. Custom VSL Player (with Chapters, 1x-1.5x Speed, Keyboard + Pointer Scrub)
+  // 1. Custom VSL Player (Chapters, 1x-1.5x Speed, Buffering/Error UX, Keyboard + Pointer Scrub)
   function initVideoPlayer() {
     const video = document.getElementById('vsl-video');
     const overlay = document.getElementById('vsl-overlay');
+    const loader = document.getElementById('vsl-loader');
+    const errorBox = document.getElementById('vsl-error');
     const playBtn = document.getElementById('vsl-play-btn');
     const speedBtn = document.getElementById('vsl-speed-btn');
     const muteBtn = document.getElementById('vsl-mute-btn');
@@ -133,7 +201,16 @@
     const speeds = [1, 1.25, 1.5];
     let speedIdx = 0;
     let trackedStart = false;
+    let userInitiated = false;
     let dragging = false;
+
+    function setLoading(loading) {
+      if (loader) loader.hidden = !loading;
+    }
+
+    function setError(hasError) {
+      if (errorBox) errorBox.hidden = !hasError;
+    }
 
     function syncPlayIcons(isPlaying) {
       const playIcon = playBtn.querySelector('[data-icon="play"]');
@@ -194,8 +271,15 @@
     }
 
     function startPlayback() {
+      userInitiated = true;
+      setError(false);
+      if (video.readyState < 3) setLoading(true);
       const p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(() => {});
+      if (p && typeof p.catch === 'function') {
+        p.catch(() => {
+          setLoading(false);
+        });
+      }
       if (!trackedStart) {
         trackedStart = true;
         trackEvent('VSLPlay');
@@ -210,10 +294,42 @@
     overlay.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
     video.addEventListener('click', togglePlay);
-    video.addEventListener('play', () => syncPlayIcons(true));
-    video.addEventListener('pause', () => syncPlayIcons(false));
-    video.addEventListener('ended', () => syncPlayIcons(false));
+
+    video.addEventListener('play', () => {
+      syncPlayIcons(true);
+      setError(false);
+    });
+    video.addEventListener('playing', () => setLoading(false));
+    video.addEventListener('canplay', () => setLoading(false));
+    video.addEventListener('waiting', () => {
+      if (userInitiated && !video.paused) setLoading(true);
+    });
+    video.addEventListener('pause', () => {
+      syncPlayIcons(false);
+      setLoading(false);
+    });
+    video.addEventListener('ended', () => {
+      syncPlayIcons(false);
+      setLoading(false);
+    });
+    video.addEventListener('error', () => {
+      setLoading(false);
+      syncPlayIcons(false);
+      if (userInitiated) setError(true);
+    });
     video.addEventListener('timeupdate', () => syncScrubUi(video.currentTime, video.duration));
+
+    if (frame) {
+      frame.addEventListener('keydown', (e) => {
+        const target = e.target;
+        const isButton = target && target.closest && target.closest('button, [role="slider"]');
+        if (isButton) return;
+        if (e.key === ' ' || e.key === 'k' || e.key === 'K') {
+          e.preventDefault();
+          togglePlay();
+        }
+      });
+    }
 
     chapterChips.forEach((chip) => {
       chip.addEventListener('click', () => {
@@ -375,7 +491,7 @@
     if (nextBtn) nextBtn.addEventListener('click', () => selectModule(currentIdx + 1));
   }
 
-  // 3. Synchronized Dual Payment Switcher & 1-Tap Copy (Inline Deck + Sheet)
+  // 3. Synchronized Dual Payment Switcher & Guided 1-Tap Copy (Inline + Sheet + Mobile Sticky)
   function initPayments() {
     const allTabs = Array.from(document.querySelectorAll('[data-pay-tab]'));
     const labelEls = Array.from(document.querySelectorAll('[data-pay-label]'));
@@ -389,18 +505,30 @@
     if (!allTabs.length) return;
 
     let currentMethod = 'baridimob';
-    let copyTimer = null;
+    let btnTimer = null;
+    let hintTimer = null;
+
+    function clearCopyTimers() {
+      if (btnTimer) {
+        clearTimeout(btnTimer);
+        btnTimer = null;
+      }
+      if (hintTimer) {
+        clearTimeout(hintTimer);
+        hintTimer = null;
+      }
+    }
 
     function setMethod(method, focusGroup = null) {
       const cfg = PAYMENT_METHODS[method];
       if (!cfg) return;
       currentMethod = method;
-      if (copyTimer) {
-        clearTimeout(copyTimer);
-        copyTimer = null;
-      }
+      clearCopyTimers();
       setCopiedVisual(false);
-      statusEls.forEach((el) => { el.textContent = ''; });
+      statusEls.forEach((el) => {
+        el.textContent = '';
+        el.hidden = true;
+      });
 
       allTabs.forEach((tab) => {
         const active = tab.getAttribute('data-pay-tab') === method;
@@ -476,15 +604,24 @@
       const cfg = PAYMENT_METHODS[currentMethod];
       const text = cfg.account;
       const done = () => {
-        if (copyTimer) clearTimeout(copyTimer);
+        clearCopyTimers();
         setCopiedVisual(true);
-        statusEls.forEach((el) => { el.textContent = 'تم نسخ الرقم: ' + text; });
+        statusEls.forEach((el) => {
+          el.textContent = cfg.copiedHint;
+          el.hidden = false;
+        });
         trackEvent('CopyPaymentID', { method: currentMethod });
-        copyTimer = setTimeout(() => {
+        btnTimer = setTimeout(() => {
           setCopiedVisual(false);
-          statusEls.forEach((el) => { el.textContent = ''; });
-          copyTimer = null;
-        }, 1800);
+          btnTimer = null;
+        }, 2200);
+        hintTimer = setTimeout(() => {
+          statusEls.forEach((el) => {
+            el.textContent = '';
+            el.hidden = true;
+          });
+          hintTimer = null;
+        }, 5500);
       };
 
       if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
@@ -498,7 +635,7 @@
     setMethod('baridimob');
   }
 
-  // 4. Instant Slide-Up Quick-Pay & Human-Chat Sheet (with Focus Management & inert background)
+  // 4. Instant Slide-Up Quick-Pay & Human-Chat Sheet (Focus Management & inert background)
   function initActionSheet() {
     const pageRoot = document.getElementById('page-root');
     const sheet = document.getElementById('action-sheet');
@@ -627,6 +764,7 @@
     update();
   }
 
+  initPixels();
   initVideoPlayer();
   initCurriculum();
   initPayments();
