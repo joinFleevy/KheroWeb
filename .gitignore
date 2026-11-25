@@ -1,0 +1,10 @@
+.env
+.env.*
+*.log
+.DS_Store
+node_modules/
+.impeccable/config.local.json
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/build/
