@@ -9,7 +9,7 @@
 
   const STANDARD_EVENT_MAP = {
     ViewContent: 'ViewContent',
-    QuickPayOpen: 'InitiateCheckout',
+    PayJump: 'InitiateCheckout',
     SendReceiptWhatsApp: 'Contact',
     SendReceiptInstagram: 'Contact',
     TalkFirstWhatsApp: 'Contact',
@@ -92,85 +92,13 @@
     }
   }
 
-  const MODULES = [
-    {
-      code: '01 / 06',
-      tag: 'من الصفر',
-      title: 'أساسيات المونتاج',
-      summary: 'العفسة الأولى اللي تقابلك كي تدخل: حتى إذا جامي خدمت بـ CapCut في البيسي، هنا تتعلم البيزيك كاملين. وحتى إذا بديت ديجا، نوريلك عفايس في الأساسيات ماشي أي واحد يعرفهم.',
-      points: [
-        'واجهة CapCut PC وأفضل الإعدادات من البداية',
-        'الاختصارات اللي تسرّعلك القص والخدمة',
-        'السرعة، النصوص، الماسك، وتصحيح الألوان',
-        'أساسيات تخليك تخدم بنظام ومن غير تعب'
-      ]
-    },
-    {
-      code: '02 / 06',
-      tag: 'خفايا CapCut',
-      title: 'لازم تعرف (وحل الـ PC الضعيف)',
-      summary: 'هنا نوريلك ليزوپسيون الصغيرة اللي ما يعرفهاش أي واحد وتعاونك بزاف، وكيفاش تدير التغذية البصرية، ومع اللخر الأوپسيون اللي تخلّيك تدير مونتاج حتى على PC ضعيف.',
-      points: [
-        'طريقة العمل السلس على PC ضعيف بلا بلوكاج',
-        'كيفاش تبني التغذية البصرية باش يجيوك أفكار قوية',
-        'المصادر وين نجيبو الفيديوهات والتصاور والملفات مجاناً',
-        'خفايا CapCut اللي توفرلك نص وقت المونتاج'
-      ]
-    },
-    {
-      code: '03 / 06',
-      tag: 'التقنيات الصح',
-      title: 'المونتاج المتقدم',
-      summary: 'هنا ندخلو للصح: العفايس اللي أوبليجي عليك تتعلمهم ودي فوا تعاودهم كل فيديو، خاطر بلا بيهم ما تقدرش تافونسي في المونتاج.',
-      points: [
-        'الـ Keyframes والحركات الاحترافية بالـ Graphs',
-        'الـ Compound Clips وصناعة البريسيت الخاصة بيك',
-        'الزوم، الـ Tracking، والموشن غرافيك النظيف',
-        'دمج المؤثرات الصوتية بالطريقة اللي تشد الانتباه'
-      ]
-    },
-    {
-      code: '04 / 06',
-      tag: 'متجدد ديما',
-      title: 'أفكار المونتاج وتحديثات الترند',
-      summary: 'نوريلك أفكار المونتاج المطلوبة في الريلز والشورتس، وكل ما يخرج ترند ولا عفسة جديدة في السوق نحطلك فيديو يشرحلك كيفاش تخدمها.',
-      points: [
-        'تحريك العناصر ورا الشخص والإضاءة المتفاعلة',
-        'ستايلات الـ Glow والظلال والكتابة الحديثة',
-        'دروس جديدة تضاف أوتوماتيكياً مع كل ترند جديد'
-      ]
-    },
-    {
-      code: '05 / 06',
-      tag: '2 إلى 3 مشاريع/شهر',
-      title: 'تطبيقات ومشاريع كاملة',
-      summary: 'تشوفني أنا شخصياً نخدم مشاريع كاملة من الأول حتى اللخر: نجيبو ستايلات مختلفين ونطبقوهم قدامك، ونزيدلك 2 حتى 3 مشاريع جديدة كل شهر.',
-      points: [
-        'تفهم وقتاش تستعمل كل تقنية من غير عشوائية',
-        'مشاريع بستايلات متنوعة تقدر دير كيفها للي كليون',
-        'إضافة مستمرة لمشاريع جديدة كل شهر في الدورة'
-      ]
-    },
-    {
-      code: '06 / 06',
-      tag: 'مصدر رزق',
-      title: 'كيفاش تجيب لي كليون',
-      summary: 'إذا تعرف تدير مونتاج وما تعرفش تجيب لي كليون كي اللي ما درت والو. نوريلك كيفاش جبتهم أنا على حسب تجربتي والأغلاط اللي لازم تفيتيهم باش ما تبقاش بلا خدمة.',
-      points: [
-        'خطوات حقيقية مجربة كيفاش تلقى وتقنع أول كليون',
-        'الأغلاط اللي تضيّع لي كليون وكيفاش تفيتيهم',
-        'المتفوقين اللي يخدمو سيرييو يخدمو معايا مباشرة'
-      ]
-    }
-  ];
-
   const PAYMENT_METHODS = {
     baridimob: {
       label: 'RIP BaridiMob',
       account: '00799999004277833193',
       now: '4,900 دج',
       old: '5,400 دج',
-      copiedHint: 'تم نسخ RIP — افتح تطبيق BaridiMob، حوّل 4,900 دج، وابعثلي صورة الوصل تحت.',
+      copiedHint: 'تم نسخ RIP — افتح تطبيق BaridiMob، حوّل 4,900 دج، وابعثلي سكرين شوت الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ BaridiMob (4,900 دج) وهاهو وصل الدفع:'
     },
     redotpay: {
@@ -178,7 +106,7 @@
       account: '1743900815',
       now: '$18',
       old: '$20',
-      copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل \u2066$18\u2069، وابعثلي صورة الوصل تحت.',
+      copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل \u2066$18\u2069، وابعثلي سكرين شوت الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ RedotPay ($18) وهاهو وصل الدفع:'
     }
   };
@@ -193,7 +121,12 @@
     return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
 
-  // 1. Custom VSL Player (Chapters, 1x-1.5x Speed, Buffering/Error UX, Keyboard + Pointer Scrub)
+  function setNodeHidden(el, hide) {
+    if (!el) return;
+    el.toggleAttribute('hidden', Boolean(hide));
+  }
+
+  // 1. Custom VSL Player (Clean Poster Start -> Frame Visible on Pause)
   function initVideoPlayer() {
     const video = document.getElementById('vsl-video');
     const overlay = document.getElementById('vsl-overlay');
@@ -205,17 +138,50 @@
     const fsBtn = document.getElementById('vsl-fs-btn');
     const scrub = document.getElementById('vsl-scrub');
     const scrubFill = document.getElementById('vsl-scrub-fill');
+    const scrubTip = document.getElementById('vsl-scrub-tip');
+    const flashEl = document.getElementById('vsl-flash');
     const timeEl = document.getElementById('vsl-time');
     const frame = document.getElementById('vsl-frame');
-    const chapterChips = Array.from(document.querySelectorAll('[data-seek]'));
     if (!video || !overlay || !playBtn) return;
 
     const speeds = [1, 1.25, 1.5];
     let speedIdx = 0;
     let trackedStart = false;
+    let hasStarted = false;
     let userInitiated = false;
     let mediaFailed = false;
     let dragging = false;
+    let flashTimer = null;
+    const reducedMotionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+
+    function triggerFlash(willPlay) {
+      if (!flashEl || !hasStarted) return;
+      if (reducedMotionQuery && reducedMotionQuery.matches) return;
+      const playIcon = flashEl.querySelector('[data-flash-icon="play"]');
+      const pauseIcon = flashEl.querySelector('[data-flash-icon="pause"]');
+      setNodeHidden(playIcon, !willPlay);
+      setNodeHidden(pauseIcon, willPlay);
+      if (flashTimer) clearTimeout(flashTimer);
+      flashEl.classList.remove('is-flashing');
+      void flashEl.offsetWidth;
+      flashEl.classList.add('is-flashing');
+      flashTimer = setTimeout(() => {
+        flashEl.classList.remove('is-flashing');
+        flashTimer = null;
+      }, 340);
+    }
+
+    function updateScrubTip(clientX) {
+      if (!scrub || !scrubTip) return;
+      const rect = scrub.getBoundingClientRect();
+      if (!rect.width) return;
+      const dur = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : VSL_DURATION;
+      const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+      const clampedX = Math.min(94, Math.max(6, ratio * 100));
+      scrub.style.setProperty('--tip-x', clampedX.toFixed(2) + '%');
+      scrubTip.textContent = formatTime(ratio * dur);
+      scrub.classList.add('is-tip-visible');
+    }
 
     function setLoading(loading) {
       if (loader) loader.hidden = !loading;
@@ -225,32 +191,19 @@
       if (errorBox) errorBox.hidden = !hasError;
     }
 
-    function syncPlayIcons(isPlaying) {
+    function syncPlayUi(isPlaying) {
       const playIcon = playBtn.querySelector('[data-icon="play"]');
       const pauseIcon = playBtn.querySelector('[data-icon="pause"]');
-      if (playIcon) playIcon.hidden = isPlaying;
-      if (pauseIcon) pauseIcon.hidden = !isPlaying;
+      setNodeHidden(playIcon, isPlaying);
+      setNodeHidden(pauseIcon, !isPlaying);
       playBtn.setAttribute('aria-label', isPlaying ? 'حبّس الفيديو' : 'شغّل الفيديو');
       if (isPlaying && document.activeElement === overlay) {
         playBtn.focus();
       }
-      overlay.classList.toggle('is-hidden', isPlaying);
-      overlay.setAttribute('aria-hidden', String(isPlaying));
-      overlay.inert = isPlaying;
-    }
-
-    function syncChapters(curTime) {
-      if (!chapterChips.length) return;
-      let activeIdx = 0;
-      chapterChips.forEach((chip, i) => {
-        const start = Number(chip.getAttribute('data-seek') || '0');
-        if (curTime >= start - 0.5) activeIdx = i;
-      });
-      chapterChips.forEach((chip, i) => {
-        const on = i === activeIdx;
-        chip.classList.toggle('is-active', on);
-        chip.setAttribute('aria-pressed', String(on));
-      });
+      const hideOverlay = isPlaying || hasStarted;
+      overlay.classList.toggle('is-hidden', hideOverlay);
+      overlay.setAttribute('aria-hidden', String(hideOverlay));
+      overlay.inert = hideOverlay;
     }
 
     function syncScrubUi(cur, dur) {
@@ -263,7 +216,6 @@
         scrub.setAttribute('aria-valuenow', String(Math.round(pct)));
         scrub.setAttribute('aria-valuetext', formatTime(clamped) + ' / ' + formatTime(safeDur));
       }
-      syncChapters(clamped);
     }
 
     function seekToTime(targetTime) {
@@ -316,12 +268,19 @@
       else video.pause();
     }
 
+    function togglePlayWithFlash() {
+      const willPlay = video.paused || video.ended;
+      togglePlay();
+      triggerFlash(willPlay);
+    }
+
     overlay.addEventListener('click', togglePlay);
     playBtn.addEventListener('click', togglePlay);
-    video.addEventListener('click', togglePlay);
+    video.addEventListener('click', togglePlayWithFlash);
 
     video.addEventListener('play', () => {
-      syncPlayIcons(true);
+      hasStarted = true;
+      syncPlayUi(true);
       setError(false);
     });
     video.addEventListener('loadedmetadata', () => {
@@ -343,17 +302,19 @@
       if (userInitiated && !video.paused) setLoading(true);
     });
     video.addEventListener('pause', () => {
-      syncPlayIcons(false);
+      syncPlayUi(false);
       setLoading(false);
     });
     video.addEventListener('ended', () => {
-      syncPlayIcons(false);
+      hasStarted = false;
+      syncPlayUi(false);
       setLoading(false);
     });
     video.addEventListener('error', () => {
+      hasStarted = false;
       mediaFailed = true;
       setLoading(false);
-      syncPlayIcons(false);
+      syncPlayUi(false);
       if (userInitiated) setError(true);
     });
     video.addEventListener('timeupdate', () => syncScrubUi(video.currentTime, video.duration));
@@ -362,21 +323,23 @@
       frame.addEventListener('keydown', (e) => {
         const target = e.target;
         const isButton = target && target.closest && target.closest('button, [role="slider"]');
-        if (isButton) return;
-        if (e.key === ' ' || e.key === 'k' || e.key === 'K') {
+        if (e.key === ' ' && !isButton) {
           e.preventDefault();
-          togglePlay();
+          togglePlayWithFlash();
         }
       });
     }
 
-    chapterChips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        const secs = Number(chip.getAttribute('data-seek') || '0');
-        seekToTime(secs);
-        startPlayback();
-        trackEvent('VSLChapter', { seconds: secs });
-      });
+    document.addEventListener('keydown', (e) => {
+      if ((e.key !== 'k' && e.key !== 'K' && e.code !== 'KeyK') || e.ctrlKey || e.metaKey || e.altKey) return;
+      const t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+      const rect = frame ? frame.getBoundingClientRect() : null;
+      const inView = rect ? rect.bottom > 0 && rect.top < window.innerHeight : false;
+      if (hasStarted || inView) {
+        e.preventDefault();
+        togglePlayWithFlash();
+      }
     });
 
     if (speedBtn) {
@@ -385,6 +348,7 @@
         const rate = speeds[speedIdx];
         video.playbackRate = rate;
         speedBtn.textContent = rate + 'x';
+        speedBtn.classList.toggle('is-boosted', rate !== 1);
         speedBtn.setAttribute('aria-label', 'تبديل سرعة الفيديو: ' + rate + 'x');
       });
     }
@@ -393,7 +357,11 @@
       function stopDrag() {
         dragging = false;
         scrub.classList.remove('is-dragging');
+        scrub.classList.remove('is-tip-visible');
       }
+      scrub.addEventListener('pointerenter', (e) => {
+        updateScrubTip(e.clientX);
+      });
       scrub.addEventListener('pointerdown', (e) => {
         dragging = true;
         scrub.classList.add('is-dragging');
@@ -403,9 +371,14 @@
           } catch (_) {}
         }
         seekToClientX(e.clientX);
+        updateScrubTip(e.clientX);
       });
       scrub.addEventListener('pointermove', (e) => {
+        updateScrubTip(e.clientX);
         if (dragging) seekToClientX(e.clientX);
+      });
+      scrub.addEventListener('pointerleave', () => {
+        if (!dragging) scrub.classList.remove('is-tip-visible');
       });
       scrub.addEventListener('pointerup', stopDrag);
       scrub.addEventListener('pointercancel', stopDrag);
@@ -436,8 +409,8 @@
         video.muted = !video.muted;
         const onIcon = muteBtn.querySelector('[data-icon="vol-on"]');
         const offIcon = muteBtn.querySelector('[data-icon="vol-off"]');
-        if (onIcon) onIcon.hidden = video.muted;
-        if (offIcon) offIcon.hidden = !video.muted;
+        setNodeHidden(onIcon, video.muted);
+        setNodeHidden(offIcon, !video.muted);
         muteBtn.setAttribute('aria-label', video.muted ? 'رجّع الصوت' : 'كتم الصوت');
       });
     }
@@ -457,98 +430,7 @@
     }
   }
 
-  // 2. Unified Single-Stage 6-Module Curriculum
-  function initCurriculum() {
-    const tabs = Array.from(document.querySelectorAll('[data-mod-tab]'));
-    const inspector = document.getElementById('mod-inspector');
-    const titleEl = document.getElementById('mod-title');
-    const codeEl = document.getElementById('mod-code');
-    const tagEl = document.getElementById('mod-tag');
-    const summaryEl = document.getElementById('mod-summary');
-    const bulletsEl = document.getElementById('mod-bullets');
-    const prevBtn = document.getElementById('mod-prev');
-    const nextBtn = document.getElementById('mod-next');
-    if (!tabs.length || !inspector || !bulletsEl) return;
-
-    let currentIdx = 0;
-
-    function createBulletNode(text) {
-      const li = document.createElement('li');
-      const svgNS = 'http://www.w3.org/2000/svg';
-      const svg = document.createElementNS(svgNS, 'svg');
-      svg.setAttribute('class', 'inspector-stage__check');
-      svg.setAttribute('viewBox', '0 0 24 24');
-      svg.setAttribute('fill', 'none');
-      svg.setAttribute('stroke', 'currentColor');
-      svg.setAttribute('stroke-width', '2');
-      svg.setAttribute('stroke-linecap', 'round');
-      svg.setAttribute('stroke-linejoin', 'round');
-      svg.setAttribute('aria-hidden', 'true');
-      const poly = document.createElementNS(svgNS, 'polyline');
-      poly.setAttribute('points', '20 6 9 17 4 12');
-      svg.appendChild(poly);
-      const span = document.createElement('span');
-      span.textContent = text;
-      li.appendChild(svg);
-      li.appendChild(span);
-      return li;
-    }
-
-    function selectModule(idx, focusTab = false) {
-      const safeIdx = ((idx % MODULES.length) + MODULES.length) % MODULES.length;
-      const mod = MODULES[safeIdx];
-      currentIdx = safeIdx;
-
-      tabs.forEach((tab, i) => {
-        const active = i === safeIdx;
-        tab.classList.toggle('is-active', active);
-        tab.setAttribute('aria-selected', String(active));
-        tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (active) {
-          if (focusTab) tab.focus();
-          const rail = tab.parentElement;
-          if (rail && window.innerWidth <= 860 && typeof rail.scrollBy === 'function') {
-            const rRect = rail.getBoundingClientRect();
-            const tRect = tab.getBoundingClientRect();
-            const delta = tRect.left + tRect.width / 2 - (rRect.left + rRect.width / 2);
-            const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            rail.scrollBy({ left: delta, behavior: reduced ? 'auto' : 'smooth' });
-          }
-        }
-      });
-
-      inspector.setAttribute('aria-labelledby', tabs[safeIdx].id);
-      if (titleEl) titleEl.textContent = mod.title;
-      if (codeEl) codeEl.textContent = mod.code;
-      if (tagEl) tagEl.textContent = mod.tag;
-      if (summaryEl) summaryEl.textContent = mod.summary;
-
-      bulletsEl.replaceChildren(...mod.points.map(createBulletNode));
-      trackEvent('CurriculumStep', { module: safeIdx + 1 });
-    }
-
-    tabs.forEach((tab, idx) => {
-      tab.addEventListener('click', () => selectModule(idx));
-      tab.addEventListener('keydown', (e) => {
-        let next = null;
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') next = idx + 1;
-        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') next = idx - 1;
-        else if (e.key === 'Home') next = 0;
-        else if (e.key === 'End') next = tabs.length - 1;
-        if (next !== null) {
-          e.preventDefault();
-          selectModule(next, true);
-        }
-      });
-    });
-
-    if (prevBtn) prevBtn.addEventListener('click', () => selectModule(currentIdx - 1));
-    if (nextBtn) nextBtn.addEventListener('click', () => selectModule(currentIdx + 1));
-
-    return selectModule;
-  }
-
-  // 3. Synchronized Dual Payment Switcher & Guided 1-Tap Copy (Inline + Sheet + Mobile Sticky)
+  // 2. Dual Payment Switcher & Guided 1-Tap Copy
   function initPayments() {
     const allTabs = Array.from(document.querySelectorAll('[data-pay-tab]'));
     const labelEls = Array.from(document.querySelectorAll('[data-pay-label]'));
@@ -557,6 +439,8 @@
     const valEls = Array.from(document.querySelectorAll('[data-pay-value]'));
     const waLinks = Array.from(document.querySelectorAll('[data-pay-wa-link]'));
     const copyBtns = Array.from(document.querySelectorAll('.copy-btn'));
+    const copyRows = Array.from(document.querySelectorAll('.copy-row'));
+    const receiptBlocks = Array.from(document.querySelectorAll('.receipt-block'));
     const copyTriggers = Array.from(document.querySelectorAll('[data-copy-trigger]'));
     const statusEls = Array.from(document.querySelectorAll('[data-copy-status]'));
     if (!allTabs.length) return;
@@ -576,75 +460,94 @@
       }
     }
 
-    function setMethod(method, focusGroup = null) {
-      const cfg = PAYMENT_METHODS[method];
-      if (!cfg) return;
-      currentMethod = method;
-      clearCopyTimers();
-      setCopiedVisual(false);
-      statusEls.forEach((el) => {
-        el.textContent = '';
-        el.classList.remove('is-warn');
-        el.hidden = true;
-      });
-
-      allTabs.forEach((tab) => {
-        const active = tab.getAttribute('data-pay-tab') === method;
-        tab.classList.toggle('is-active', active);
-        tab.setAttribute('aria-selected', String(active));
-        tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (active && focusGroup && tab.getAttribute('data-pay-group') === focusGroup) {
-          tab.focus();
-        }
-        const panelId = tab.getAttribute('aria-controls');
-        if (active && panelId) {
-          const panel = document.getElementById(panelId);
-          if (panel) panel.setAttribute('aria-labelledby', tab.id);
-        }
-      });
-
-      const priceDir = method === 'redotpay' ? 'ltr' : 'rtl';
-      labelEls.forEach((el) => { el.textContent = cfg.label; });
-      nowEls.forEach((el) => {
-        el.textContent = cfg.now;
-        el.setAttribute('dir', priceDir);
-      });
-      oldEls.forEach((el) => {
-        el.textContent = cfg.old;
-        el.setAttribute('dir', priceDir);
-      });
-      valEls.forEach((el) => { el.textContent = cfg.account; });
-      waLinks.forEach((link) => { link.href = WA_BASE + encodeURIComponent(cfg.waText); });
-    }
-
-    ['inline', 'sheet'].forEach((group) => {
-      const groupTabs = allTabs.filter((t) => t.getAttribute('data-pay-group') === group);
-      groupTabs.forEach((tab, idx) => {
-        tab.addEventListener('click', () => setMethod(tab.getAttribute('data-pay-tab')));
-        tab.addEventListener('keydown', (e) => {
-          let nextIdx = null;
-          if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') nextIdx = (idx + 1) % groupTabs.length;
-          else if (e.key === 'Home') nextIdx = 0;
-          else if (e.key === 'End') nextIdx = groupTabs.length - 1;
-          if (nextIdx !== null) {
-            e.preventDefault();
-            setMethod(groupTabs[nextIdx].getAttribute('data-pay-tab'), group);
-          }
-        });
-      });
-    });
-
     function setCopiedVisual(copied) {
       copyBtns.forEach((btn) => {
         btn.classList.toggle('is-copied', copied);
         const copyIcon = btn.querySelector('[data-copy-icon="copy"]');
         const checkIcon = btn.querySelector('[data-copy-icon="check"]');
         const label = btn.querySelector('[data-copy-label]');
-        if (copyIcon) copyIcon.hidden = copied;
-        if (checkIcon) checkIcon.hidden = !copied;
+        setNodeHidden(copyIcon, copied);
+        setNodeHidden(checkIcon, !copied);
         if (label) label.textContent = copied ? 'تم النسخ' : 'نسخ';
       });
+      copyRows.forEach((row) => row.classList.toggle('is-copied-flash', copied));
+      receiptBlocks.forEach((block) => block.classList.toggle('is-ready', copied));
+      waLinks.forEach((link) => {
+        if (copied) {
+          link.classList.remove('is-ready');
+          void link.offsetWidth;
+          link.classList.add('is-ready');
+        } else {
+          link.classList.remove('is-ready');
+        }
+      });
     }
+
+    function runPaymentTransition(updateFn, useTransition) {
+      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (useTransition && !reducedMotion && typeof document.startViewTransition === 'function') {
+        document.startViewTransition(updateFn);
+      } else {
+        updateFn();
+      }
+    }
+
+    function setMethod(method, shouldFocus = false, useTransition = false) {
+      const cfg = PAYMENT_METHODS[method];
+      if (!cfg) return;
+      currentMethod = method;
+      clearCopyTimers();
+
+      runPaymentTransition(() => {
+        setCopiedVisual(false);
+        waLinks.forEach((link) => link.classList.remove('is-ready'));
+        statusEls.forEach((el) => {
+          el.textContent = '';
+          el.classList.remove('is-warn');
+          el.hidden = true;
+        });
+
+        allTabs.forEach((tab) => {
+          const active = tab.getAttribute('data-pay-tab') === method;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', String(active));
+          tab.setAttribute('tabindex', active ? '0' : '-1');
+          if (active && shouldFocus) tab.focus();
+          const panelId = tab.getAttribute('aria-controls');
+          if (active && panelId) {
+            const panel = document.getElementById(panelId);
+            if (panel) panel.setAttribute('aria-labelledby', tab.id);
+          }
+        });
+
+        const priceDir = method === 'redotpay' ? 'ltr' : 'rtl';
+        labelEls.forEach((el) => { el.textContent = cfg.label; });
+        nowEls.forEach((el) => {
+          el.textContent = cfg.now;
+          el.setAttribute('dir', priceDir);
+        });
+        oldEls.forEach((el) => {
+          el.textContent = cfg.old;
+          el.setAttribute('dir', priceDir);
+        });
+        valEls.forEach((el) => { el.textContent = cfg.account; });
+        waLinks.forEach((link) => { link.href = WA_BASE + encodeURIComponent(cfg.waText); });
+      }, useTransition);
+    }
+
+    allTabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => setMethod(tab.getAttribute('data-pay-tab'), false, true));
+      tab.addEventListener('keydown', (e) => {
+        let nextIdx = null;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') nextIdx = (idx + 1) % allTabs.length;
+        else if (e.key === 'Home') nextIdx = 0;
+        else if (e.key === 'End') nextIdx = allTabs.length - 1;
+        if (nextIdx !== null) {
+          e.preventDefault();
+          setMethod(allTabs[nextIdx].getAttribute('data-pay-tab'), true, true);
+        }
+      });
+    });
 
     function selectElementText(el) {
       if (!el || !window.getSelection || !document.createRange) return;
@@ -711,7 +614,7 @@
         btnTimer = setTimeout(() => {
           setCopiedVisual(false);
           btnTimer = null;
-        }, 2200);
+        }, 5500);
         hintTimer = setTimeout(() => {
           statusEls.forEach((el) => {
             el.textContent = '';
@@ -733,7 +636,7 @@
         if (targetEl) selectElementText(targetEl);
         statusEls.forEach((el) => {
           el.classList.add('is-warn');
-          el.textContent = 'المتصفح منع النسخ التلقائي — اضغط مطوّلاً على الرقم فوق وانسخو يدوياً.';
+          el.textContent = 'المتصفح حبس النسخ التلقائي — أبويي مطوّل على الرقم فوق ودير Copier بيدك.';
           el.hidden = false;
         });
         hintTimer = setTimeout(() => {
@@ -760,114 +663,23 @@
 
     copyTriggers.forEach((el) => el.addEventListener('click', () => triggerCopy(el)));
     valEls.forEach((el) => {
-      el.addEventListener('click', () => {
+      const activate = () => {
         selectElementText(el);
         triggerCopy(el);
-      });
-    });
-    setMethod('baridimob');
-  }
-
-  // 4. Instant Slide-Up Quick-Pay & Human-Chat Sheet (Focus Management & inert background)
-  function initActionSheet() {
-    const pageRoot = document.getElementById('page-root');
-    const sheet = document.getElementById('action-sheet');
-    const titleEl = document.getElementById('sheet-title');
-    const subEl = document.getElementById('sheet-sub');
-    const payBody = document.getElementById('sheet-body-pay');
-    const chatBody = document.getElementById('sheet-body-chat');
-    const closeBtn = document.getElementById('sheet-close-btn');
-    if (!pageRoot || !sheet || !payBody || !chatBody) return;
-
-    let lastTrigger = null;
-
-    function applySheetMode(mode) {
-      const isPay = mode !== 'chat';
-      payBody.hidden = !isPay;
-      chatBody.hidden = isPay;
-      if (titleEl) {
-        titleEl.textContent = isPay ? '1. خلّص ديريكت وابعثلي الوصل' : 'احكي معايا الأول في واتساب ولا إنستا';
-      }
-      if (subEl) {
-        subEl.textContent = isPay
-          ? 'بلا فورمولار: انسخ الرقم، حوّل المبلغ، وابعثلي صورة الوصل.'
-          : 'عادي بزاف تسقسي قبل ما تحوّل دراهمك: نجاوبك أنا شخصياً على أي سؤال.';
-      }
-    }
-
-    function openSheet(mode, triggerEl = null) {
-      lastTrigger = triggerEl || document.activeElement;
-      applySheetMode(mode);
-      sheet.hidden = false;
-      pageRoot.inert = true;
-      pageRoot.setAttribute('aria-hidden', 'true');
-      document.documentElement.classList.add('sheet-open');
-      document.body.classList.add('sheet-open');
-      requestAnimationFrame(() => sheet.classList.add('is-open'));
-      if (closeBtn) closeBtn.focus();
-
-      const source = triggerEl ? triggerEl.getAttribute('data-track-source') || 'page' : 'page';
-      trackEvent(mode === 'chat' ? 'ChatSheetOpen' : 'QuickPayOpen', { source });
-    }
-
-    function closeSheet() {
-      if (sheet.hidden) return;
-      sheet.classList.remove('is-open');
-      sheet.hidden = true;
-      pageRoot.inert = false;
-      pageRoot.removeAttribute('aria-hidden');
-      document.documentElement.classList.remove('sheet-open');
-      document.body.classList.remove('sheet-open');
-      if (lastTrigger && typeof lastTrigger.focus === 'function') {
-        lastTrigger.focus();
-      }
-      lastTrigger = null;
-    }
-
-    document.querySelectorAll('[data-open-sheet]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        openSheet(btn.getAttribute('data-open-sheet'), btn);
-      });
-    });
-
-    document.querySelectorAll('[data-switch-sheet]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const nextMode = btn.getAttribute('data-switch-sheet');
-        applySheetMode(nextMode);
-        if (closeBtn) closeBtn.focus();
-      });
-    });
-
-    document.querySelectorAll('[data-sheet-close]').forEach((el) => {
-      el.addEventListener('click', closeSheet);
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (sheet.hidden) return;
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        closeSheet();
-        return;
-      }
-      if (e.key === 'Tab') {
-        const focusables = Array.from(
-          sheet.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')
-        ).filter((el) => !el.closest('[hidden]') && el.getClientRects().length > 0);
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && (document.activeElement === first || !sheet.contains(document.activeElement))) {
+      };
+      el.addEventListener('click', activate);
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && (document.activeElement === last || !sheet.contains(document.activeElement))) {
-          e.preventDefault();
-          first.focus();
+          activate();
         }
-      }
+      });
     });
+
+    setMethod('baridimob', false, false);
   }
 
-  // 5. FAQ Accordion & General Link Tracking
+  // 3. FAQ Accordion & Navigation Tracking
   function initFaqAndTracking() {
     document.querySelectorAll('[data-faq-btn]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -875,7 +687,19 @@
         const panel = panelId ? document.getElementById(panelId) : null;
         const nextOpen = btn.getAttribute('aria-expanded') !== 'true';
         btn.setAttribute('aria-expanded', String(nextOpen));
-        if (panel) panel.hidden = !nextOpen;
+        if (panel) {
+          panel.classList.toggle('is-open', nextOpen);
+          panel.setAttribute('aria-hidden', String(!nextOpen));
+          panel.inert = !nextOpen;
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-track-jump]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const eventName = el.getAttribute('data-track-jump');
+        const source = el.getAttribute('data-track-source') || 'page';
+        if (eventName) trackEvent(eventName, { source });
       });
     });
 
@@ -891,286 +715,75 @@
     });
   }
 
-  // 6. Dual Mobile Sticky Bar Visibility (inert + aria-hidden when tucked away)
-  function initStickyMobileBar() {
-    const bar = document.getElementById('mobile-sticky');
-    const hero = document.getElementById('hero');
-    const enroll = document.getElementById('enroll');
-    if (!bar || !hero || !enroll || typeof IntersectionObserver === 'undefined') return;
+  // 4. Active Section Indicator & Cinema Playhead Fallback
+  function initNavSpy() {
+    const topbar = document.querySelector('.topbar');
+    const links = Array.from(document.querySelectorAll('.nav__link[href^="#"]'));
+    const sections = links
+      .map((link) => {
+        const id = link.getAttribute('href').slice(1);
+        const el = id ? document.getElementById(id) : null;
+        return el ? { el, link } : null;
+      })
+      .filter(Boolean);
+    if (!sections.length) return;
 
-    let heroVisible = true;
-    let enrollVisible = false;
-
-    function update() {
-      const visible = !heroVisible && !enrollVisible;
-      bar.classList.toggle('is-visible', visible);
-      bar.setAttribute('aria-hidden', String(!visible));
-      bar.inert = !visible;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === hero) heroVisible = entry.isIntersecting;
-        if (entry.target === enroll) enrollVisible = entry.isIntersecting;
-      });
-      update();
-    }, { threshold: 0.12 });
-
-    observer.observe(hero);
-    observer.observe(enroll);
-    update();
-  }
-
-  // 7. Interactive CapCut Craft & Weak-PC Proxy Lab
-  function initCraftLab(selectModule) {
-    const labTabs = Array.from(document.querySelectorAll('[data-lab-tab]'));
-    const stage = document.getElementById('lab-stage');
-    const descEl = document.getElementById('lab-desc');
-    const codeEl = document.getElementById('lab-mode-code');
-    const statusPill = document.getElementById('lab-status-pill');
-    const screenEl = document.getElementById('lab-screen');
-    const screenTitle = document.getElementById('lab-screen-title');
-    const screenSub = document.getElementById('lab-screen-sub');
-    const proxyToggleBtn = document.getElementById('lab-proxy-toggle');
-    const jumpBtn = document.getElementById('lab-jump-mod');
-    if (!labTabs.length || !stage || !screenEl) return;
-
-    const LAB_MODES = {
-      proxy: {
-        desc: 'في المحور الثاني نوريلك الأوپسيون اللي تخلّيك تدير مونتاج سلس في CapCut PC حتى إذا البيسي تاعك ضعيف بزاف وبلا بلوكاج.',
-        code: 'MOD_02 · PROXY_FIX',
-        modIndex: 1,
-        jumpLabel: 'شوف التفاصيل في المحور 02 ←'
-      },
-      mask: {
-        desc: 'في المحور الثالث نوريلك تقنيات الماسك وتحريك العناصر والكتابة ورا الشخص باش الريلز تاعك تبان احترافية ديريكت.',
-        code: 'MOD_03 · MASK_LAYERS',
-        pill: '3 LAYERS · DEPTH',
-        title: 'كتابة وعناصر ورا الشخص',
-        sub: 'عزل النظرة والعمق داخل CapCut PC',
-        modIndex: 2,
-        jumpLabel: 'شوف التفاصيل في المحور 03 ←'
-      },
-      glow: {
-        desc: 'في المحور الرابع نخدمو أفكار المونتاج والـ Glow والكتابة الحديثة مع الإيقاع، وزيد دروس تضاف أوتوماتيكياً مع كل ترند.',
-        code: 'MOD_04 · GLOW_RHYTHM',
-        pill: 'TREND_READY · FX',
-        title: 'إضاءة متفاعلة وإيقاع مضبوط',
-        sub: 'تناسق الصوت + الحركة + الـ SFX',
-        modIndex: 3,
-        jumpLabel: 'شوف التفاصيل في المحور 04 ←'
-      }
-    };
-
-    let proxyOn = true;
-
-    function renderProxyState() {
-      if (proxyToggleBtn) {
-        proxyToggleBtn.setAttribute('aria-pressed', String(proxyOn));
-        proxyToggleBtn.textContent = proxyOn ? 'إعدادات المحور 02: مفعّلة' : 'بلا إعدادات: البيسي يتبلوكا';
-      }
-      screenEl.setAttribute('data-proxy-state', proxyOn ? 'on' : 'off');
-      if (statusPill) {
-        statusPill.textContent = proxyOn ? '60 FPS · SMOOTH' : '12 FPS · LAG';
-        statusPill.classList.toggle('is-ok', proxyOn);
-        statusPill.classList.toggle('is-lag', !proxyOn);
-      }
-      if (screenTitle) {
-        screenTitle.textContent = proxyOn ? 'مونتاج سلس على PC ضعيف' : 'تقطيع وبلوكاج في التايملاين';
-      }
-      if (screenSub) {
-        screenSub.textContent = proxyOn
-          ? 'بلا بلوكاج في التايملاين · معاينة تفاعلية'
-          : 'بدون إعدادات المحور الثاني (ثقيل في العرض)';
-      }
-    }
-
-    function selectLabMode(mode, focusTab = false) {
-      const cfg = LAB_MODES[mode];
-      if (!cfg) return;
-
-      labTabs.forEach((tab) => {
-        const active = tab.getAttribute('data-lab-tab') === mode;
-        tab.classList.toggle('is-active', active);
-        tab.setAttribute('aria-selected', String(active));
-        tab.setAttribute('tabindex', active ? '0' : '-1');
-        if (active) {
-          stage.setAttribute('aria-labelledby', tab.id);
-          if (focusTab) tab.focus();
-        }
-      });
-
-      screenEl.setAttribute('data-lab-mode', mode);
-      if (descEl) descEl.textContent = cfg.desc;
-      if (codeEl) codeEl.textContent = cfg.code;
-      if (proxyToggleBtn) proxyToggleBtn.hidden = mode !== 'proxy';
-      if (jumpBtn) {
-        jumpBtn.setAttribute('data-jump-mod', String(cfg.modIndex));
-        jumpBtn.textContent = cfg.jumpLabel;
-      }
-
-      if (mode === 'proxy') {
-        renderProxyState();
-      } else {
-        if (statusPill) {
-          statusPill.textContent = cfg.pill;
-          statusPill.classList.add('is-ok');
-          statusPill.classList.remove('is-lag');
-        }
-        if (screenTitle) screenTitle.textContent = cfg.title;
-        if (screenSub) screenSub.textContent = cfg.sub;
-      }
-
-      trackEvent('CraftLabTab', { mode });
-    }
-
-    labTabs.forEach((tab, idx) => {
-      tab.addEventListener('click', () => selectLabMode(tab.getAttribute('data-lab-tab')));
-      tab.addEventListener('keydown', (e) => {
-        let nextIdx = null;
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') nextIdx = (idx + 1) % labTabs.length;
-        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') nextIdx = (idx - 1 + labTabs.length) % labTabs.length;
-        else if (e.key === 'Home') nextIdx = 0;
-        else if (e.key === 'End') nextIdx = labTabs.length - 1;
-        if (nextIdx !== null) {
-          e.preventDefault();
-          selectLabMode(labTabs[nextIdx].getAttribute('data-lab-tab'), true);
-        }
-      });
-    });
-
-    if (proxyToggleBtn) {
-      proxyToggleBtn.addEventListener('click', () => {
-        proxyOn = !proxyOn;
-        renderProxyState();
-        trackEvent('CraftLabProxy', { on: proxyOn });
+    function setActive(activeLink) {
+      links.forEach((link) => {
+        const on = link === activeLink;
+        link.classList.toggle('is-active', on);
+        if (on) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
       });
     }
 
-    if (jumpBtn) {
-      jumpBtn.addEventListener('click', () => {
-        const idx = Number(jumpBtn.getAttribute('data-jump-mod') || '1');
-        if (typeof selectModule === 'function') selectModule(idx);
-        const targetSection = document.getElementById('curriculum');
-        const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (targetSection && typeof targetSection.scrollIntoView === 'function') {
-          targetSection.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    function syncNav() {
+      const vh = window.innerHeight;
+      const docEl = document.documentElement;
+      const docH = docEl.scrollHeight;
+      if (topbar) topbar.classList.toggle('is-scrolled', window.scrollY > 24);
+      if (typeof CSS === 'undefined' || typeof CSS.supports !== 'function' || !CSS.supports('animation-timeline', 'scroll()')) {
+        const maxScroll = Math.max(1, docH - vh);
+        const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+        docEl.style.setProperty('--scroll-progress', progress.toFixed(4));
+      }
+      if (window.scrollY < 320) {
+        setActive(null);
+        return;
+      }
+      if (vh + window.scrollY >= docH - 40) {
+        setActive(sections[sections.length - 1].link);
+        return;
+      }
+      let current = null;
+      for (const item of sections) {
+        const rect = item.el.getBoundingClientRect();
+        if (rect.top <= vh * 0.45 && rect.bottom > 80) {
+          current = item.link;
         }
-        const modTab = document.getElementById('mod-tab-' + idx);
-        if (modTab) {
-          try {
-            modTab.focus({ preventScroll: true });
-          } catch (_) {}
-        }
-      });
-    }
-  }
-
-  // 8. Live Playable Web Audio SFX Sampler (#pack Card 1)
-  function initSfxSampler() {
-    const pads = Array.from(document.querySelectorAll('[data-sfx-pad]'));
-    const badge = document.getElementById('sfx-badge');
-    if (!pads.length) return;
-
-    const well = pads[0].closest('.specimen-well');
-    let audioCtx = null;
-    let resetTimer = null;
-
-    function playTone(kind) {
-      const Ctx = window.AudioContext || window.webkitAudioContext;
-      if (!Ctx) return;
-      try {
-        if (!audioCtx) audioCtx = new Ctx();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const now = audioCtx.currentTime;
-
-        if (kind === 'whoosh') {
-          const len = Math.floor(audioCtx.sampleRate * 0.34);
-          const buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
-          const ch = buf.getChannelData(0);
-          for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
-          const src = audioCtx.createBufferSource();
-          src.buffer = buf;
-          const filter = audioCtx.createBiquadFilter();
-          filter.type = 'bandpass';
-          filter.Q.value = 1.6;
-          filter.frequency.setValueAtTime(220, now);
-          filter.frequency.exponentialRampToValueAtTime(2500, now + 0.16);
-          filter.frequency.exponentialRampToValueAtTime(180, now + 0.34);
-          const gain = audioCtx.createGain();
-          gain.gain.setValueAtTime(0.01, now);
-          gain.gain.linearRampToValueAtTime(0.28, now + 0.14);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.34);
-          src.connect(filter).connect(gain).connect(audioCtx.destination);
-          src.start(now);
-        } else if (kind === 'riser') {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(120, now);
-          osc.frequency.exponentialRampToValueAtTime(880, now + 0.44);
-          gain.gain.setValueAtTime(0.01, now);
-          gain.gain.linearRampToValueAtTime(0.14, now + 0.36);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.46);
-          osc.connect(gain).connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.48);
-        } else if (kind === 'hit') {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'sine';
-          osc.frequency.setValueAtTime(145, now);
-          osc.frequency.exponentialRampToValueAtTime(38, now + 0.28);
-          gain.gain.setValueAtTime(0.45, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-          osc.connect(gain).connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.34);
-        } else {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(720, now);
-          osc.frequency.exponentialRampToValueAtTime(1260, now + 0.08);
-          gain.gain.setValueAtTime(0.22, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
-          osc.connect(gain).connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 0.12);
-        }
-      } catch (_) {}
+      }
+      setActive(current);
     }
 
-    pads.forEach((pad) => {
-      pad.addEventListener('click', () => {
-        const sfx = pad.getAttribute('data-sfx-pad') || 'whoosh';
-        playTone(sfx);
-
-        if (resetTimer) clearTimeout(resetTimer);
-        pads.forEach((p) => p.classList.toggle('is-active', p === pad));
-        if (well) well.classList.add('is-playing');
-        if (badge) badge.textContent = 'PLAYING: ' + sfx.toUpperCase();
-
-        resetTimer = setTimeout(() => {
-          pads.forEach((p) => p.classList.remove('is-active'));
-          if (well) well.classList.remove('is-playing');
-          if (badge) badge.textContent = '500+ FILES';
-          resetTimer = null;
-        }, 550);
-
-        trackEvent('SFXPreview', { sfx });
+    let rafPending = false;
+    function scheduleSync() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        syncNav();
       });
-    });
+    }
+
+    window.addEventListener('scroll', scheduleSync, { passive: true });
+    window.addEventListener('resize', scheduleSync, { passive: true });
+    syncNav();
   }
 
   initPixels();
   initVideoPlayer();
-  const selectModule = initCurriculum();
-  initCraftLab(selectModule);
-  initSfxSampler();
   initPayments();
-  initActionSheet();
   initFaqAndTracking();
-  initStickyMobileBar();
+  initNavSpy();
   trackEvent('ViewContent');
 })();

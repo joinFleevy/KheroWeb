@@ -28,14 +28,19 @@ typography:
     lineHeight: 1.24
   title:
     fontFamily: "Alexandria, Segoe UI, Tahoma, sans-serif"
-    fontSize: "1.65rem"
-    fontWeight: 900
+    fontSize: "1.35rem"
+    fontWeight: 800
     lineHeight: 1.3
-  body:
-    fontFamily: "Alexandria, Segoe UI, Tahoma, sans-serif"
-    fontSize: "0.98rem"
+  lead:
+    fontFamily: "IBM Plex Sans Arabic, Segoe UI, Tahoma, sans-serif"
+    fontSize: "1.05rem"
     fontWeight: 400
     lineHeight: 1.65
+  body:
+    fontFamily: "IBM Plex Sans Arabic, Segoe UI, Tahoma, sans-serif"
+    fontSize: "0.98rem"
+    fontWeight: 400
+    lineHeight: 1.72
   label:
     fontFamily: "Alexandria, Segoe UI, Tahoma, sans-serif"
     fontSize: "0.88rem"
@@ -132,7 +137,8 @@ High-contrast neutral obsidian and cool-slate tones frame warm bone typography (
 
 ## Typography
 
-**Display & Body Font:** `Alexandria` (self-hosted variable WOFF2 `400–900`, fallback `'Segoe UI', Tahoma, sans-serif`)
+**Display & Headings Font:** `Alexandria` (self-hosted variable WOFF2 `400–900`, fallback `'Segoe UI', Tahoma, sans-serif`)
+**Body Font:** `IBM Plex Sans Arabic` (self-hosted WOFF2 `400`/`500`/`700`, fallback `'Segoe UI', Tahoma, sans-serif`)
 **Tabular / Data Font:** `Chivo Mono` (self-hosted variable WOFF2 `400–700`, fallback `ui-monospace, monospace`)
 
 - **Display** (`900`, `clamp(1.95rem, 3.6vw, 3.15rem)`, `1.15`, `-0.02em`): Asymmetric hero `<h1>` only.
