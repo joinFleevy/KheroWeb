@@ -97,7 +97,6 @@
       label: 'RIP BaridiMob',
       account: '00799999004277833193',
       now: '4,900 دج',
-      old: '5,400 دج',
       copiedHint: 'تم نسخ RIP — افتح تطبيق BaridiMob، حوّل 4,900 دج، وابعثلي سكرين شوت الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ BaridiMob (4,900 دج) وهاهو وصل الدفع:'
     },
@@ -105,7 +104,6 @@
       label: 'RedotPay ID',
       account: '1743900815',
       now: '$18',
-      old: '$20',
       copiedHint: 'تم نسخ RedotPay ID — افتح RedotPay، حوّل \u2066$18\u2069، وابعثلي سكرين شوت الوصل تحت.',
       waText: 'سلام خيرو، خلّصت دورة CapCut PC بـ RedotPay ($18) وهاهو وصل الدفع:'
     }
@@ -435,7 +433,6 @@
     const allTabs = Array.from(document.querySelectorAll('[data-pay-tab]'));
     const labelEls = Array.from(document.querySelectorAll('[data-pay-label]'));
     const nowEls = Array.from(document.querySelectorAll('[data-pay-now]'));
-    const oldEls = Array.from(document.querySelectorAll('[data-pay-old]'));
     const valEls = Array.from(document.querySelectorAll('[data-pay-value]'));
     const waLinks = Array.from(document.querySelectorAll('[data-pay-wa-link]'));
     const copyBtns = Array.from(document.querySelectorAll('.copy-btn'));
@@ -524,10 +521,6 @@
         labelEls.forEach((el) => { el.textContent = cfg.label; });
         nowEls.forEach((el) => {
           el.textContent = cfg.now;
-          el.setAttribute('dir', priceDir);
-        });
-        oldEls.forEach((el) => {
-          el.textContent = cfg.old;
           el.setAttribute('dir', priceDir);
         });
         valEls.forEach((el) => { el.textContent = cfg.account; });

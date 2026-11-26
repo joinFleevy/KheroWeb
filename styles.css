@@ -568,12 +568,6 @@ button {
   color: var(--accent-warm);
 }
 
-.hero__price-old {
-  font-size: var(--text-label);
-  color: var(--ink-muted);
-  text-decoration: line-through;
-}
-
 .hero__sep {
   color: var(--accent);
   font-weight: 900;
@@ -1341,12 +1335,6 @@ button {
   font-size: 1.65rem;
   font-weight: 900;
   color: var(--accent-warm);
-}
-
-.transfer-block__old {
-  font-size: var(--text-label);
-  color: var(--ink-muted);
-  text-decoration: line-through;
 }
 
 .copy-row {

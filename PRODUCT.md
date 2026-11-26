@@ -16,7 +16,7 @@ Algerian youth and aspiring creators/freelancers (primarily arriving on mobile p
 
 ## Product Purpose
 
-KheroWeb is the conversion landing page for Khero's CapCut PC video editing course (دورة CapCut PC). Success means turning Instagram visitors into confirmed enrollments via BaridiMob (4,900 DA, discounted from 5,400 DA) or RedotPay ($18, discounted from $20) through a clear, human-first, Algerian Darija-only experience.
+KheroWeb is the conversion landing page for Khero's CapCut PC video editing course (دورة CapCut PC). Success means turning Instagram visitors into confirmed enrollments via BaridiMob (4,900 DA) or RedotPay ($18) through a clear, human-first, Algerian Darija-only experience.
 
 ## Positioning
 
@@ -26,7 +26,7 @@ Unlike generic editing tutorials that assume expensive gear and stop at effects,
 
 - Acquisition channel: Instagram (`https://www.instagram.com/kherouu.vid/`), predominantly mobile visitors on Algerian 4G.
 - Enrollment & payment flow (confirmed zero-form dual-door UX — **NO Name, NO Phone, NO Wilaya inputs**):
-  - **Door 1 (Primary Main CTA) — Enroll & pay directly ("اشترك معانا"):** Reveals BaridiMob (`00799999004277833193`, **4,900 دج** discounted from ~~5,400 دج~~) and RedotPay (`1743900815`, **$18** discounted from ~~$20~~) transfer details with 1-click Copy, followed by a clear choice to send the payment receipt to Khero on **WhatsApp** OR **Instagram**.
+  - **Door 1 (Primary Main CTA) — Enroll & pay directly ("اشترك معانا"):** Reveals BaridiMob (`00799999004277833193`, **4,900 دج**) and RedotPay (`1743900815`, **$18**) transfer details with 1-click Copy, followed by a clear choice to send the payment receipt to Khero on **WhatsApp** OR **Instagram**.
   - **Door 2 (Secondary CTA) — Human conversation first ("احكي معايا"):** Direct buttons to open a pre-filled WhatsApp chat with Khero (`+213 553 21 80 24`, sent with user consent) OR message him on Instagram (`https://www.instagram.com/kherouu.vid/`) before paying.
 - Confirmed 5-band landing structure:
   1. Sticky Topbar (`KHV` vector SVG, `علاش الدورة` · `البرنامج` · `الأسئلة`, CTA `سجّل الآن`) + Scroll-driven Cinema Playhead
@@ -50,6 +50,7 @@ Unlike generic editing tutorials that assume expensive gear and stop at effects,
   5. تطبيقات ومشاريع — Full start-to-finish edits recreating viral styles, updated with 2–3 new projects every month.
   6. كيفاش تجيب لي كليون — Practical client-finding guidance and beginner mistakes to avoid when starting out (light positioning, no hiring guarantees).
 - No dedicated Pack (`#pack`) section or "work with me" (`#work`) banner per explicit owner decision (2026-11-26).
+- Pricing honesty rule: Never display fake promo / strikethrough anchor prices (`5,400 دج`, `$20`) — show only the honest fixed price (`4,900 دج` / `$18`) everywhere.
 - Undecided / unconfirmed facts (do NOT invent): exact delivery platform after payment confirmation (e.g., Telegram vs Drive) and exact access duration label — keep post-payment copy truthful ("غير نشوف الوصل نأكدلك أنا شخصياً ونبعثلك رابط الدورة ديريكت").
 - Security constraint: Cloudflare R2 API token and S3 credentials must never be committed to git or bundled into frontend files.
 
